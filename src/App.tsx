@@ -15,7 +15,7 @@ const App: React.FC = () => {
       {/* Ruta principal carga Home */}
       <Route index element={<Home />} />
       {/* Rutas secundarias */}
-      <Route path="agentes-ia" element={<AgentesIA />} />
+      <Route path="landing" element={<AgentesIA />} />
       {/* 404 */}
     </Route>
   </Routes>

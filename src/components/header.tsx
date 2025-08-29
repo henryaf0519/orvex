@@ -75,7 +75,7 @@ const Header = () => {
             Testimonios
           </a>
           <Link
-            to="/agentes-ia"
+            to="/landing"
             className="hover:text-gray-400 font-medium transition-colors duration-200"
             style={{ color: "white" }}
           >
@@ -161,7 +161,7 @@ const Header = () => {
             Testimonios
           </a>
            <Link
-            to="/agentes-ia"
+            to="/landing"
             className="hover:text-gray-400 font-medium transition-colors duration-200"
             style={{ color: "white" }}
           >

@@ -16,8 +16,8 @@ import {
   Plus,
   CalendarCheck,
   TrendingUp,
-} from "lucide-react"; // --- ICONOS UNIFICADOS ---
-
+} from "lucide-react";
+import WistiaPlayer from "../components/WistiaPlayer";
 import CalendlyEmbed from "../components/CalendlyEmbed";
 import CalendlyModal from "../components/CalendlyModal";
 
@@ -191,7 +191,8 @@ const BenefitCard = ({
 );
 
 const AgentesIA: React.FC = () => {
-  const fullText = "Agentes IA que Trabajan por Ti";
+  const fullText =
+    " Automatiza tu Agenda y Multiplica tus Citas sin Contratar Personal.";
   const progress = useMotionValue(0);
   const [displayedText, setDisplayedText] = useState("");
   const [typingFinished, setTypingFinished] = useState(false);
@@ -233,58 +234,51 @@ const AgentesIA: React.FC = () => {
         className="font-inter antialiased bg-darkBgColor text-gray-100"
       >
         {/* Hero Section */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center text-center lg:text-left overflow-hidden px-6">
-          <div className="absolute inset-0 bg-darkBgColor" />
-          <div className="relative container mx-auto w-full max-w-7xl flex-grow flex items-center justify-center">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
-              {/* Columna Izquierda: Texto */}
-              <div className="flex flex-col items-center lg:items-start">
-                <motion.h1
-                  ref={containerRef}
-                  className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-white my-4"
-                >
-                  <span className="text-primaryColor">Orvex:</span>{" "}
-                  {displayedText}
-                  <motion.span
-                    className="inline-block w-1 h-12 bg-white ml-1"
-                    animate={
-                      typingFinished
-                        ? { opacity: [0, 1, 0] }
-                        : { opacity: [0, 1] }
-                    }
-                    transition={
-                      typingFinished
-                        ? { repeat: Infinity, duration: 1.2 }
-                        : { repeat: Infinity, duration: 0.6, ease: "linear" }
-                    }
-                  />
-                </motion.h1>
-                <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
-                  En los próximos 7 días, tu negocio puede dejar de perder
-                  dinero por citas canceladas y empezar a cobrar por
-                  adelantado... sin contratar personal, sin aprender tecnología
-                  y sin perder más tiempo en WhatsApp, web o donde lo necesites.
-                </p>
-              </div>
+        {/* Hero Section - OPCIÓN B: ALTO IMPACTO */}
+        {/* Hero Section - VIDEO COMPLETO Y TEXTO VISIBLE */}
+        <section
+          id="inicio"
+          className="relative min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-20 text-center bg-darkBgColor"
+        >
+          {/* 1. Contenido de Texto (Parte Superior) - AHORA SIN EL BOTÓN */}
+          <div className="relative z-10 w-full max-w-5xl">
+            <motion.h1
+              ref={containerRef}
+              className="text-4xl sm:text-5xl md:text-5xl font-extrabold leading-tight text-white my-4"
+            >
+              <span className="text-primaryColor">Orvex:</span> {displayedText}
+              <motion.span
+                className="inline-block w-1 h-12 bg-white ml-1"
+                animate={
+                  typingFinished ? { opacity: [0, 1, 0] } : { opacity: [0, 1] }
+                }
+                transition={
+                  typingFinished
+                    ? { repeat: Infinity, duration: 1.2 }
+                    : { repeat: Infinity, duration: 0.6, ease: "linear" }
+                }
+              />
+            </motion.h1>
+            <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              En los próximos 7 días, tu negocio puede dejar de perder dinero
+              por citas canceladas y empezar a cobrar por adelantado... sin
+              contratar personal, sin aprender tecnología y sin perder más
+              tiempo en WhatsApp, web o donde lo necesites.
+            </p>
+          </div>
 
-              {/* Columna Derecha: Video Placeholder */}
-              <div className="flex items-center justify-center w-full">
-                <div className="w-full max-w-md aspect-video bg-gray-800 rounded-lg flex items-center justify-center border-2 border-gray-700 shadow-2xl animate-pulse">
-                  <span className="text-white">Tu Video Aquí</span>
-                </div>
-              </div>
+          {/* 2. Contenido de Video (Parte Intermedia) */}
+          <div className="relative z-10 w-full max-w-5xl mx-auto">
+            <div className="aspect-video bg-black rounded-lg overflow-hidden border-2 border-gray-800 shadow-2xl">
+              <WistiaPlayer mediaId="b0dckf0a2r" className="w-full h-full" />
             </div>
           </div>
 
-          {/* Botón centrado */}
-          <div className="relative pb-16 pt-8 z-10 text-center">
-            <p className="text-3xl text-white mb-6 max-w-xl mx-auto">
-              Descubre cómo implementar un Agente de IA que responde, agenda y
-              cobra por ti, 24/7.
-            </p>
+          {/* 3. BOTÓN (Parte Inferior) - MOVIDO AQUÍ */}
+          <div className="relative z-10 w-full mt-8">
             <button
               onClick={() => setIsModalOpen(true)}
-              className="bg-primaryColor hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105"
+              className="bg-primaryColor hover:bg-red-700 text-white font-bold py-3 px-8 text-base md:py-4 md:px-10 md:text-lg rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105"
             >
               Solicita una Demostración Gratuita
             </button>
@@ -320,81 +314,6 @@ const AgentesIA: React.FC = () => {
                 <p className="mt-4 text-lg sm:text-xl text-white font-semibold">
                   El problema no es tu dedicación. Es depender de herramientas
                   que ya no dan abasto.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits Section */}
-        <section id="benefits" className="py-16 sm:py-24 bg-darkBgColor">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white">
-                Resultados, no solo promesas.
-              </h2>
-              <p className="mt-4 text-lg text-primaryColor font-semibold max-w-3xl mx-auto">
-                Esto es lo que ORVEX consigue para tu negocio desde la primera
-                semana.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              {/* Columna Izquierda: Beneficios Clave */}
-              <div className="space-y-8">
-                {benefitsData.map((benefit, index) => (
-                  <BenefitCard
-                    key={index}
-                    icon={benefit.icon}
-                    title={benefit.title}
-                    description={benefit.description}
-                  />
-                ))}
-              </div>
-
-              {/* Columna Derecha: Plataforma CRM */}
-              <div className="bg-gray-900 p-8 rounded-2xl border border-gray-700 shadow-2xl">
-                <h3 className="text-2xl sm:text-3xl font-semibold text-white mb-6">
-                  Tu <span className="text-primaryColor">Ecosistema</span> de
-                  Crecimiento
-                </h3>
-                <p className="text-lg text-gray-300 leading-relaxed">
-                  ORVEX no es solo un agente de IA; es una plataforma de gestión
-                  integral diseñada para convertir conversaciones en clientes.
-                </p>
-                <ul className="mt-6 space-y-4">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="text-primaryColor mt-1.5 flex-shrink-0" />
-                    <span className="text-gray-300">
-                      <span className="font-semibold text-white">
-                        Bandeja Omnicanal:
-                      </span>{" "}
-                      Unifica WhatsApp, web y redes sociales en un solo lugar.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="text-primaryColor mt-1.5 flex-shrink-0" />
-                    <span className="text-gray-300">
-                      <span className="font-semibold text-white">
-                        Gestión de Pipeline:
-                      </span>{" "}
-                      Visualiza y gestiona cada lead, desde el primer contacto
-                      hasta el cierre de la venta.
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="text-primaryColor mt-1.5 flex-shrink-0" />
-                    <span className="text-gray-300">
-                      <span className="font-semibold text-white">
-                        Marketing Automatizado:
-                      </span>{" "}
-                      Envía promociones, recordatorios y contenido de valor para
-                      nutrir a tus clientes sin esfuerzo.
-                    </span>
-                  </li>
-                </ul>
-                <p className="mt-6 text-lg text-white font-medium">
-                  Toma el control total de la experiencia de tu cliente.
                 </p>
               </div>
             </div>
@@ -565,10 +484,6 @@ const AgentesIA: React.FC = () => {
         </section>
 
         {/* Transformation Timeline Section  */}
-
-        {/* Transformation Timeline Section - CON LAYOUT MÓVIL CORREGIDO */}
-        {/* Transformation Timeline Section - VERSIÓN FINAL REFINADA */}
-        {/* Transformation Timeline Section - CON IMÁGENES MÓVILES MÁS GRANDES */}
         <section
           id="transformacion"
           className="py-16 sm:py-24 bg-black relative"
@@ -727,6 +642,81 @@ const AgentesIA: React.FC = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Benefits Section */}
+        <section id="benefits" className="py-16 sm:py-24 bg-darkBgColor">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">
+                Resultados, no solo promesas.
+              </h2>
+              <p className="mt-4 text-lg text-primaryColor font-semibold max-w-3xl mx-auto">
+                Esto es lo que ORVEX consigue para tu negocio desde la primera
+                semana.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+              {/* Columna Izquierda: Beneficios Clave */}
+              <div className="space-y-8">
+                {benefitsData.map((benefit, index) => (
+                  <BenefitCard
+                    key={index}
+                    icon={benefit.icon}
+                    title={benefit.title}
+                    description={benefit.description}
+                  />
+                ))}
+              </div>
+
+              {/* Columna Derecha: Plataforma CRM */}
+              <div className="bg-gray-900 p-8 rounded-2xl border border-gray-700 shadow-2xl">
+                <h3 className="text-2xl sm:text-3xl font-semibold text-white mb-6">
+                  Tu <span className="text-primaryColor">Ecosistema</span> de
+                  Crecimiento
+                </h3>
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  ORVEX no es solo un agente de IA; es una plataforma de gestión
+                  integral diseñada para convertir conversaciones en clientes.
+                </p>
+                <ul className="mt-6 space-y-4">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="text-primaryColor mt-1.5 flex-shrink-0" />
+                    <span className="text-gray-300">
+                      <span className="font-semibold text-white">
+                        Bandeja Omnicanal:
+                      </span>{" "}
+                      Unifica WhatsApp, web y redes sociales en un solo lugar.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="text-primaryColor mt-1.5 flex-shrink-0" />
+                    <span className="text-gray-300">
+                      <span className="font-semibold text-white">
+                        Gestión de Pipeline:
+                      </span>{" "}
+                      Visualiza y gestiona cada lead, desde el primer contacto
+                      hasta el cierre de la venta.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="text-primaryColor mt-1.5 flex-shrink-0" />
+                    <span className="text-gray-300">
+                      <span className="font-semibold text-white">
+                        Marketing Automatizado:
+                      </span>{" "}
+                      Envía promociones, recordatorios y contenido de valor para
+                      nutrir a tus clientes sin esfuerzo.
+                    </span>
+                  </li>
+                </ul>
+                <p className="mt-6 text-lg text-white font-medium">
+                  Toma el control total de la experiencia de tu cliente.
+                </p>
               </div>
             </div>
           </div>
@@ -1005,7 +995,7 @@ const AgentesIA: React.FC = () => {
               className="bg-darkBgColor rounded-xl shadow-xl overflow-hidden"
               style={{ height: "700px" }}
             >
-              <CalendlyEmbed url="https://calendly.com/hentech-ia/30min" />
+              <CalendlyEmbed url="https://calendly.com/henryaf0519/reunion-demo-orvex" />
             </div>
 
             <p className="mt-8 text-sm text-gray-500">
@@ -1021,7 +1011,7 @@ const AgentesIA: React.FC = () => {
       <CalendlyModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        url="https://calendly.com/hentech-ia/30min"
+        url="https://calendly.com/henryaf0519/reunion-demo-orvex"
       />
     </>
   );

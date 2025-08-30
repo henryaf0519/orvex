@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  motion,
-  animate,
-  useMotionValue,
-  useMotionValueEvent,
-} from "motion/react";
+import { animate, useMotionValue, useMotionValueEvent } from "motion/react";
 import {
   CheckCircle,
   BarChart3,
@@ -17,6 +12,7 @@ import {
   CalendarCheck,
   TrendingUp,
 } from "lucide-react";
+import { motion } from "framer-motion";
 import WistiaPlayer from "../components/WistiaPlayer";
 import CalendlyEmbed from "../components/CalendlyEmbed";
 import CalendlyModal from "../components/CalendlyModal";
@@ -234,14 +230,13 @@ const AgentesIA: React.FC = () => {
         className="font-inter antialiased bg-darkBgColor text-gray-100"
       >
         {/* Hero Section */}
-        {/* Hero Section - OPCIÓN B: ALTO IMPACTO */}
-        {/* Hero Section - VIDEO COMPLETO Y TEXTO VISIBLE */}
         <section
           id="inicio"
           className="relative min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-20 text-center bg-darkBgColor"
         >
-          {/* 1. Contenido de Texto (Parte Superior) - AHORA SIN EL BOTÓN */}
+          {/* 1. Contenido de Texto (Parte Superior) */}
           <div className="relative z-10 w-full max-w-5xl">
+            {/* El h1 ya tiene su propia animación de tipeo, la dejamos como está */}
             <motion.h1
               ref={containerRef}
               className="text-4xl sm:text-5xl md:text-5xl font-extrabold leading-tight text-white my-4"
@@ -259,48 +254,75 @@ const AgentesIA: React.FC = () => {
                 }
               />
             </motion.h1>
-            <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            {/* Párrafo con animación */}
+            <motion.p
+              className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 1.5 }} // Retraso para que aparezca después del título
+            >
               En los próximos 7 días, tu negocio puede dejar de perder dinero
               por citas canceladas y empezar a cobrar por adelantado... sin
               contratar personal, sin aprender tecnología y sin perder más
               tiempo en WhatsApp, web o donde lo necesites.
-            </p>
+            </motion.p>
           </div>
 
-          {/* 2. Contenido de Video (Parte Intermedia) */}
-          <div className="relative z-10 w-full max-w-5xl mx-auto">
+          {/* 2. Contenido de Video (Parte Intermedia) con animación */}
+          <motion.div
+            className="relative z-10 w-full max-w-5xl mx-auto"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease: "easeOut", delay: 2.0 }} // Retraso mayor para el video
+          >
             <div className="aspect-video bg-black rounded-lg overflow-hidden border-2 border-gray-800 shadow-2xl">
               <WistiaPlayer mediaId="b0dckf0a2r" className="w-full h-full" />
             </div>
-          </div>
+          </motion.div>
 
-          {/* 3. BOTÓN (Parte Inferior) - MOVIDO AQUÍ */}
-          <div className="relative z-10 w-full mt-8">
+          {/* 3. BOTÓN (Parte Inferior) con animación */}
+          <motion.div
+            className="relative z-10 w-full mt-8"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "backOut", delay: 2.5 }} // El último en aparecer con efecto
+          >
             <button
               onClick={() => setIsModalOpen(true)}
               className="bg-primaryColor hover:bg-red-700 text-white font-bold py-3 px-8 text-base md:py-4 md:px-10 md:text-lg rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105"
             >
               Solicita una Demostración Gratuita
             </button>
-          </div>
+          </motion.div>
         </section>
-
         {/* Problem Section */}
         <section className="py-16 sm:py-24 bg-darkBgColor">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Columna Izquierda: Imagen */}
-              <div className="relative flex justify-center group">
+              {/* Columna Izquierda: Imagen con animación */}
+              <motion.div
+                className="relative flex justify-center group"
+                initial={{ opacity: 0, x: -50 }} // Inicia invisible y a la izquierda
+                whileInView={{ opacity: 1, x: 0 }} // Se vuelve visible y se mueve a su posición
+                viewport={{ once: true, amount: 0.3 }} // Se anima una vez cuando el 30% del componente está visible
+                transition={{ duration: 0.8, ease: "easeOut" }} // Duración y tipo de transición
+              >
                 <img
                   src="/assets/chat.png"
                   alt="Agente IA gestionando un chat con un cliente"
                   className="w-full max-w-md aspect-square object-cover rounded-xl shadow-2xl"
                 />
                 <div className="absolute inset-0 w-full h-full rounded-xl bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-              </div>
+              </motion.div>
 
-              {/* Columna Derecha: Texto */}
-              <div className="text-center lg:text-left">
+              {/* Columna Derecha: Texto con animación */}
+              <motion.div
+                className="text-center lg:text-left"
+                initial={{ opacity: 0, x: 50 }} // Inicia invisible y a la derecha
+                whileInView={{ opacity: 1, x: 0 }} // Se vuelve visible y se mueve a su posición
+                viewport={{ once: true, amount: 0.3 }} // Se anima una vez cuando el 30% del componente está visible
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.0 }} // Retraso para que aparezca después de la imagen
+              >
                 <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
                   ¿Tu día a día se siente como una carrera{" "}
                   <span className="text-primaryColor">contra el tiempo?</span>
@@ -315,16 +337,21 @@ const AgentesIA: React.FC = () => {
                   El problema no es tu dedicación. Es depender de herramientas
                   que ya no dan abasto.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
-
         {/* Benefits Section */}
         <section id="benefits" className="py-16 sm:py-24 bg-darkBgColor">
           <div className="max-w-7xl mx-auto px-6">
-            {/* Títulos */}
-            <div className="text-center mb-16">
+            {/* Títulos con animación */}
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
               <h2 className="text-3xl sm:text-5xl font-bold text-white leading-tight">
                 ¿Qué lograrás con{" "}
                 <span className="text-primaryColor">ORVEX</span>?
@@ -333,59 +360,65 @@ const AgentesIA: React.FC = () => {
                 Transforma tu negocio con un sistema inteligente que trabaja
                 para ti.
               </p>
-            </div>
+            </motion.div>
 
-            {/* Grid de 3 Columnas */}
+            {/* Grid de 3 Columnas con animación escalonada */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
-              {/* Columna 1: Automatización */}
-              <div className="text-center flex flex-col items-center">
-                <div className="p-5 bg-gray-900 rounded-full border-2 border-primaryColor/30 mb-6 transition-all duration-300 hover:border-primaryColor">
-                  <Zap size={32} className="text-primaryColor" />
-                </div>
-                <h3 className="text-2xl font-semibold text-white mb-3">
-                  Automatización 24/7
-                </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Recupera de 5 a 10 horas semanales delegando las respuestas
-                  repetitivas a un agente que nunca descansa. Tu IA gestionará
-                  consultas en WhatsApp, web y redes para que tú te dediques a
-                  crecer.
-                </p>
-              </div>
-
-              {/* Columna 2: Conversión */}
-              <div className="text-center flex flex-col items-center">
-                <div className="p-5 bg-gray-900 rounded-full border-2 border-primaryColor/30 mb-6 transition-all duration-300 hover:border-primaryColor">
-                  <CalendarCheck size={32} className="text-primaryColor" />
-                </div>
-                <h3 className="text-2xl font-semibold text-white mb-3">
-                  Conversión Inteligente
-                </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Llena tu agenda con citas confirmadas y pagadas por
-                  adelantado. Nuestro sistema asegura cada reserva con un pago,
-                  eliminando las ausencias y garantizando tu flujo de caja.
-                </p>
-              </div>
-
-              {/* Columna 3: Escalabilidad */}
-              <div className="text-center flex flex-col items-center">
-                <div className="p-5 bg-gray-900 rounded-full border-2 border-primaryColor/30 mb-6 transition-all duration-300 hover:border-primaryColor">
-                  <TrendingUp size={32} className="text-primaryColor" />
-                </div>
-                <h3 className="text-2xl font-semibold text-white mb-3">
-                  Escalabilidad Simple
-                </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Crece sin aumentar tus costos fijos. Implementa tecnología de
-                  punta sin necesidad de contratar más personal ni de tener
-                  conocimientos técnicos. Nosotros nos encargamos de todo.
-                </p>
-              </div>
+              {[
+                {
+                  icon: <Zap size={32} className="text-primaryColor" />,
+                  title: "Automatización 24/7",
+                  description:
+                    "Recupera de 5 a 10 horas semanales delegando las respuestas repetitivas a un agente que nunca descansa. Tu IA gestionará consultas en WhatsApp, web y redes para que tú te dediques a crecer.",
+                },
+                {
+                  icon: (
+                    <CalendarCheck size={32} className="text-primaryColor" />
+                  ),
+                  title: "Conversión Inteligente",
+                  description:
+                    "Llena tu agenda con citas confirmadas y pagadas por adelantado. Nuestro sistema asegura cada reserva con un pago, eliminando las ausencias y garantizando tu flujo de caja.",
+                },
+                {
+                  icon: <TrendingUp size={32} className="text-primaryColor" />,
+                  title: "Escalabilidad Simple",
+                  description:
+                    "Crece sin aumentar tus costos fijos. Implementa tecnología de punta sin necesidad de contratar más personal ni de tener conocimientos técnicos. Nosotros nos encargamos de todo.",
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="text-center flex flex-col items-center"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{
+                    duration: 0.6,
+                    ease: "easeOut",
+                    delay: 0.2 + index * 0.2,
+                  }}
+                >
+                  <div className="p-5 bg-gray-900 rounded-full border-2 border-primaryColor/30 mb-6 transition-all duration-300 hover:border-primaryColor">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-2xl font-semibold text-white mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    {item.description}
+                  </p>
+                </motion.div>
+              ))}
             </div>
 
-            {/* Banner Inferior */}
-            <div className="max-w-4xl mx-auto mt-20 bg-gray-900/50 border border-primaryColor/30 rounded-lg p-5 text-center">
+            {/* Banner Inferior con animación */}
+            <motion.div
+              className="max-w-4xl mx-auto mt-20 bg-gray-900/50 border border-primaryColor/30 rounded-lg p-5 text-center"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
               <p className="text-lg font-semibold text-white">
                 ✨ Y lo mejor de todo: lo conseguirás con un{" "}
                 <span className="text-primaryColor">
@@ -393,97 +426,131 @@ const AgentesIA: React.FC = () => {
                 </span>
                 , funcionando para ti en menos de 7 días.
               </p>
-            </div>
+            </motion.div>
           </div>
         </section>
-
-        {/* How You'll Achieve It Section */}
+        {/* How It Works Section */}
         <section id="how-to" className="py-16 sm:py-24 bg-darkBgColor">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="relative bg-gray-900 rounded-2xl shadow-2xl overflow-hidden">
+            <motion.div
+              className="relative bg-gray-900 rounded-2xl shadow-2xl overflow-hidden"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 {/* Columna Izquierda: Panel de Texto */}
                 <div className="relative z-10 p-8 sm:p-12 flex flex-col justify-center">
                   <div>
-                    <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+                    {/* Título y subtítulos animados */}
+                    <motion.h2
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.8,
+                        ease: "easeOut",
+                        delay: 0.2,
+                      }}
+                      className="text-3xl sm:text-4xl font-bold text-white leading-tight"
+                    >
                       ¿Cómo lo Vas a Lograr?
-                    </h2>
-                    <p className="mt-2 text-lg text-primaryColor font-semibold">
+                    </motion.h2>
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.8,
+                        ease: "easeOut",
+                        delay: 0.3,
+                      }}
+                      className="mt-2 text-lg text-primaryColor font-semibold"
+                    >
                       Con tu propio Agente Digital de IA 24/7
-                    </p>
-                    <p className="mt-4 text-gray-400">
+                    </motion.p>
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.8,
+                        ease: "easeOut",
+                        delay: 0.4,
+                      }}
+                      className="mt-4 text-gray-400"
+                    >
                       Implementamos un sistema inteligente que se encarga de las
                       tareas repetitivas para que tú te enfoques en lo que
                       realmente importa:
-                    </p>
+                    </motion.p>
                   </div>
 
+                  {/* Lista de beneficios con animación escalonada */}
                   <ul className="space-y-4 mt-8">
-                    <li className="flex items-center gap-3">
-                      <CheckCircle
-                        size={20}
-                        className="text-green-500 flex-shrink-0"
-                      />
-                      <span className="text-lg text-gray-300">
-                        Filtra clientes y responde preguntas frecuentes.
-                      </span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <CheckCircle
-                        size={20}
-                        className="text-green-500 flex-shrink-0"
-                      />
-                      <span className="text-lg text-gray-300">
-                        Agenda citas y cobra por adelantado.
-                      </span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <CheckCircle
-                        size={20}
-                        className="text-green-500 flex-shrink-0"
-                      />
-                      <span className="text-lg text-gray-300">
-                        Evita cancelaciones y asegura tu agenda.
-                      </span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <CheckCircle
-                        size={20}
-                        className="text-green-500 flex-shrink-0"
-                      />
-                      <span className="text-lg text-gray-300">
-                        Listo para ti en menos de 7 días.
-                      </span>
-                    </li>
+                    {[
+                      "Filtra clientes y responde preguntas frecuentes.",
+                      "Agenda citas y cobra por adelantado.",
+                      "Evita cancelaciones y asegura tu agenda.",
+                      "Listo para ti en menos de 7 días.",
+                    ].map((item, index) => (
+                      <motion.li
+                        key={index}
+                        className="flex items-center gap-3"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.6,
+                          ease: "easeOut",
+                          delay: 0.5 + index * 0.15,
+                        }}
+                      >
+                        <CheckCircle
+                          size={20}
+                          className="text-green-500 flex-shrink-0"
+                        />
+                        <span className="text-lg text-gray-300">{item}</span>
+                      </motion.li>
+                    ))}
                   </ul>
 
-                  <div className="mt-10">
+                  {/* Botón con animación */}
+                  <motion.div
+                    className="mt-10"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "backOut", delay: 1.0 }}
+                  >
                     <button
                       onClick={() => setIsModalOpen(true)}
                       className="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105"
                     >
                       Quiero mi Agente Ahora
                     </button>
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Columna Derecha: Imagen */}
-                {/* En pantallas grandes (lg), esta imagen se posicionará de forma absoluta para crear el efecto de superposición */}
                 <div className="hidden lg:block lg:relative">
-                  <img
-                    src="/assets/orvexchat.png" // RECOMENDACIÓN: Usa aquí una imagen profesional de tu equipo o de una persona sonriendo.
+                  <motion.img
+                    src="/assets/orvexchat.png"
                     alt="Un equipo profesional colaborando gracias a la eficiencia de Orvex"
                     className="absolute inset-0 w-full h-full object-cover"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
                   />
-                  {/* Capa de degradado para fusionar la imagen con el fondo */}
                   <div className="absolute inset-0 bg-gradient-to-l from-transparent via-gray-900/50 to-gray-900"></div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
-
-        {/* Transformation Timeline Section  */}
+        {/* Transformation Section */}
         <section
           id="transformacion"
           className="py-16 sm:py-24 bg-black relative"
@@ -495,8 +562,14 @@ const AgentesIA: React.FC = () => {
           </div>
 
           <div className="max-w-7xl mx-auto px-6 relative z-10">
-            {/* Título de la Sección */}
-            <div className="text-center mb-24">
+            {/* Título de la Sección con animación */}
+            <motion.div
+              className="text-center mb-24"
+              initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
               <h2 className="text-3xl sm:text-5xl font-bold text-white leading-tight">
                 La Nueva Era de tu{" "}
                 <span className="text-primaryColor">Operación</span>
@@ -506,7 +579,7 @@ const AgentesIA: React.FC = () => {
                 pesado para que tú te dediques a lo que nadie más puede hacer:
                 hacer crecer tu negocio.
               </p>
-            </div>
+            </motion.div>
 
             {/* Contenedor de la Línea de Tiempo */}
             <div className="relative">
@@ -514,143 +587,128 @@ const AgentesIA: React.FC = () => {
               <div className="hidden lg:block absolute top-12 bottom-12 left-1/2 w-0.5 bg-gray-800"></div>
 
               <div className="space-y-24">
-                {/* Beneficio 1: Automatización */}
-                <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                  <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-primaryColor rounded-full border-4 border-black ring-4 ring-primaryColor/50"></div>
-                  {/* Columna de Imagen */}
-                  <div className="lg:order-last">
-                    <img
-                      src="/assets/automatizacion.png"
-                      alt="Dashboard de automatización"
-                      className="rounded-lg shadow-md border border-gray-800 w-full h-auto object-contain lg:aspect-video"
-                    />
-                  </div>
-                  {/* Columna de Texto */}
-                  <div className="text-center lg:text-left">
-                    <h3 className="text-3xl font-semibold text-white">
-                      Automatización sin complicaciones
-                    </h3>
-                    <p className="mt-4 text-lg text-gray-400 leading-relaxed">
-                      Olvídate de lo técnico y de contratar asistentes
-                      adicionales. Te entregamos un sistema listo para usar,
-                      completamente configurado, para que empieces a
-                      aprovecharlo desde el primer día sin perder tiempo.
-                    </p>
-                    <div className="mt-8 flex justify-center lg:justify-start">
-                      <button
-                        onClick={() => setIsModalOpen(true)}
-                        className="bg-primaryColor text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-primaryColor/50"
-                      >
-                        Automatizar mi Negocio Ahora
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                {[
+                  {
+                    imageSrc: "/assets/automatizacion.png",
+                    alt: "Dashboard de automatización",
+                    title: "Automatización sin complicaciones",
+                    description:
+                      "Olvídate de lo técnico y de contratar asistentes adicionales. Te entregamos un sistema listo para usar, completamente configurado, para que empieces a aprovecharlo desde el primer día sin perder tiempo.",
+                    buttonText: "Automatizar mi Negocio Ahora",
+                    imageOrderClass: "lg:order-last",
+                  },
+                  {
+                    imageSrc: "/assets/calendar.png",
+                    alt: "Calendario con citas pagadas",
+                    title: "Agenda Llena + Cobro Asegurado",
+                    description:
+                      "Se acabaron los ‘te confirmo después’. Con nuestro agente, solo agendas a quienes pagan y van en serio. Más ventas cerradas, menos tiempo perdido.",
+                    buttonText: "Asegurar mis Cobros",
+                    imageOrderClass: "",
+                  },
+                  {
+                    imageSrc: "/assets/business.png",
+                    alt: "Gráfico de crecimiento 24/7",
+                    title:
+                      "Tu Negocio Activo las 24 Horas, Sin Contratar Personal",
+                    description:
+                      "Tu agente trabaja de forma continua: responde preguntas, agenda citas y atrae nuevos clientes a cualquier hora, sin nómina ni limitaciones de horario.",
+                    buttonText: "Activar mi Agente 24/7",
+                    imageOrderClass: "lg:order-last",
+                  },
+                  {
+                    imageSrc: "/assets/sales.png",
+                    alt: "Impulso de ventas con IA",
+                    title: "Tu Mejor Vendedor, Siempre Activo",
+                    description:
+                      "Un agente que nunca se detiene: comparte promociones, impulsa tus ventas y mantiene a tus clientes pensando en tu negocio, incluso mientras duermes.",
+                    buttonText: "Impulsar mi negocio",
+                    imageOrderClass: "",
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                  >
+                    {/* El punto de la línea de tiempo, también animado */}
+                    <motion.div
+                      className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-primaryColor rounded-full border-4 border-black ring-4 ring-primaryColor/50"
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true, amount: 0.5 }}
+                      transition={{
+                        duration: 0.5,
+                        ease: "easeOut",
+                        delay: 0.4,
+                      }}
+                    ></motion.div>
 
-                {/* Beneficio 2: Conversión */}
-                <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                  <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-primaryColor rounded-full border-4 border-black ring-4 ring-primaryColor/50"></div>
-                  {/* Columna de Imagen */}
-                  <div>
-                    <img
-                      src="/assets/calendar.png"
-                      alt="Calendario con citas pagadas"
-                      className="rounded-lg shadow-md border border-gray-800 w-full h-auto object-contain lg:aspect-video"
-                    />
-                  </div>
-                  {/* Columna de Texto */}
-                  <div className="text-center lg:text-left lg:pl-12">
-                    <h3 className="text-3xl font-semibold text-white">
-                      Agenda Llena + Cobro Asegurado
-                    </h3>
-                    <p className="mt-4 text-lg text-gray-400 leading-relaxed">
-                      Se acabaron los ‘te confirmo después’. Con nuestro agente,
-                      solo agendas a quienes pagan y van en serio. Más ventas
-                      cerradas, menos tiempo perdido.
-                    </p>
-                    <div className="mt-8 flex justify-center lg:justify-start">
-                      <button
-                        onClick={() => setIsModalOpen(true)}
-                        className="bg-primaryColor text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-primaryColor/50"
-                      >
-                        Asegurar mis Cobros
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                    {/* Columna de Imagen */}
+                    <motion.div
+                      className={item.imageOrderClass}
+                      initial={{
+                        opacity: 0,
+                        x: item.imageOrderClass ? 100 : -100,
+                      }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                      <img
+                        src={item.imageSrc}
+                        alt={item.alt}
+                        className="rounded-lg shadow-md border border-gray-800 w-full h-auto object-contain lg:aspect-video"
+                      />
+                    </motion.div>
 
-                {/* Beneficio 3: Escalabilidad */}
-                <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                  <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-primaryColor rounded-full border-4 border-black ring-4 ring-primaryColor/50"></div>
-                  {/* Columna de Imagen */}
-                  <div className="lg:order-last">
-                    <img
-                      src="/assets/business.png"
-                      alt="Gráfico de crecimiento 24/7"
-                      className="rounded-lg shadow-md border border-gray-800 w-full h-auto object-contain lg:aspect-video"
-                    />
+                    {/* Columna de Texto */}
+                    <motion.div
+                      className={`text-center lg:text-left ${
+                        item.imageOrderClass ? "" : "lg:pl-12"
+                      }`}
+                      initial={{
+                        opacity: 0,
+                        x: item.imageOrderClass ? -100 : 100,
+                      }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{
+                        duration: 0.8,
+                        ease: "easeOut",
+                        delay: 0.2,
+                      }}
+                    >
+                      <h3 className="text-3xl font-semibold text-white">
+                        {item.title}
+                      </h3>
+                      <p className="mt-4 text-lg text-gray-400 leading-relaxed">
+                        {item.description}
+                      </p>
+                      <div className="mt-8 flex justify-center lg:justify-start">
+                        <button
+                          onClick={() => setIsModalOpen(true)}
+                          className="bg-primaryColor text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-primaryColor/50"
+                        >
+                          {item.buttonText}
+                        </button>
+                      </div>
+                    </motion.div>
                   </div>
-                  {/* Columna de Texto */}
-                  <div className="text-center lg:text-left">
-                    <h3 className="text-3xl font-semibold text-white">
-                      Tu Negocio Activo las 24 Horas, Sin Contratar Personal
-                    </h3>
-                    <p className="mt-4 text-lg text-gray-400 leading-relaxed">
-                      Tu agente trabaja de forma continua: responde preguntas,
-                      agenda citas y atrae nuevos clientes a cualquier hora, sin
-                      nómina ni limitaciones de horario.
-                    </p>
-                    <div className="mt-8 flex justify-center lg:justify-start">
-                      <button
-                        onClick={() => setIsModalOpen(true)}
-                        className="bg-primaryColor text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-primaryColor/50"
-                      >
-                        Activar mi Agente 24/7
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Beneficio 4: Ventas */}
-                <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                  <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-primaryColor rounded-full border-4 border-black ring-4 ring-primaryColor/50"></div>
-                  {/* Columna de Imagen */}
-                  <div>
-                    <img
-                      src="/assets/sales.png"
-                      alt="Impulso de ventas con IA"
-                      className="rounded-lg shadow-md border border-gray-800 w-full h-auto object-contain lg:aspect-video"
-                    />
-                  </div>
-                  {/* Columna de Texto */}
-                  <div className="text-center lg:text-left lg:pl-12">
-                    <h3 className="text-3xl font-semibold text-white">
-                      Tu Mejor Vendedor, Siempre Activo
-                    </h3>
-                    <p className="mt-4 text-lg text-gray-400 leading-relaxed">
-                      Un agente que nunca se detiene: comparte promociones,
-                      impulsa tus ventas y mantiene a tus clientes pensando en
-                      tu negocio, incluso mientras duermes.
-                    </p>
-                    <div className="mt-8 flex justify-center lg:justify-start">
-                      <button
-                        onClick={() => setIsModalOpen(true)}
-                        className="bg-primaryColor text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-primaryColor/50"
-                      >
-                        Impulsar mi negocio
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
-
-        {/* Benefits Section */}
+        {/* Benefits + CRM Section */}
         <section id="benefits" className="py-16 sm:py-24 bg-darkBgColor">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16">
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
               <h2 className="text-3xl sm:text-4xl font-bold text-white">
                 Resultados, no solo promesas.
               </h2>
@@ -658,23 +716,40 @@ const AgentesIA: React.FC = () => {
                 Esto es lo que ORVEX consigue para tu negocio desde la primera
                 semana.
               </p>
-            </div>
+            </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              {/* Columna Izquierda: Beneficios Clave */}
+              {/* Columna Izquierda: Beneficios Clave con animación escalonada */}
               <div className="space-y-8">
                 {benefitsData.map((benefit, index) => (
-                  <BenefitCard
+                  <motion.div
                     key={index}
-                    icon={benefit.icon}
-                    title={benefit.title}
-                    description={benefit.description}
-                  />
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{
+                      duration: 0.6,
+                      ease: "easeOut",
+                      delay: index * 0.2,
+                    }}
+                  >
+                    <BenefitCard
+                      icon={benefit.icon}
+                      title={benefit.title}
+                      description={benefit.description}
+                    />
+                  </motion.div>
                 ))}
               </div>
 
-              {/* Columna Derecha: Plataforma CRM */}
-              <div className="bg-gray-900 p-8 rounded-2xl border border-gray-700 shadow-2xl">
+              {/* Columna Derecha: Plataforma CRM con animación */}
+              <motion.div
+                className="bg-gray-900 p-8 rounded-2xl border border-gray-700 shadow-2xl"
+                initial={{ opacity: 0, x: 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
+              >
                 <h3 className="text-2xl sm:text-3xl font-semibold text-white mb-6">
                   Tu <span className="text-primaryColor">Ecosistema</span> de
                   Crecimiento
@@ -717,11 +792,10 @@ const AgentesIA: React.FC = () => {
                 <p className="mt-6 text-lg text-white font-medium">
                   Toma el control total de la experiencia de tu cliente.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
-
         {/* Investment Section */}
         <section
           id="investment-proof"
@@ -729,7 +803,14 @@ const AgentesIA: React.FC = () => {
         >
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-              <div className="lg:col-span-2 bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl">
+              {/* Columna principal (izquierda) con animación */}
+              <motion.div
+                className="lg:col-span-2 bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl"
+                initial={{ opacity: 0, x: -100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
                 <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
                   Una Inversión Inteligente, no un Gasto
                 </h2>
@@ -738,7 +819,14 @@ const AgentesIA: React.FC = () => {
                   recurso valioso, pero ¿es la opción más eficiente?
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="border border-gray-700 p-6 rounded-xl">
+                  {/* Tarjeta "Asistente Humano" con animación */}
+                  <motion.div
+                    className="border border-gray-700 p-6 rounded-xl"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+                  >
                     <h3 className="text-xl font-semibold text-white">
                       Asistente Humano
                     </h3>
@@ -757,8 +845,15 @@ const AgentesIA: React.FC = () => {
                         libres
                       </li>
                     </ul>
-                  </div>
-                  <div className="border-2 border-primaryColor p-6 rounded-xl relative overflow-hidden">
+                  </motion.div>
+                  {/* Tarjeta "Agente IA ORVEX" con animación */}
+                  <motion.div
+                    className="border-2 border-primaryColor p-6 rounded-xl relative overflow-hidden"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
+                  >
                     <div className="absolute top-0 right-0 bg-primaryColor text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
                       RECOMENDADO
                     </div>
@@ -782,15 +877,22 @@ const AgentesIA: React.FC = () => {
                         descansa
                       </li>
                     </ul>
-                  </div>
+                  </motion.div>
                 </div>
                 <p className="mt-8 text-center text-lg text-gray-300 italic">
                   "Si hoy pierdes al menos una venta a la semana, ya estás
                   pagando el costo de NO tenerlo."
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl h-full flex flex-col">
+              {/* Columna derecha con animación */}
+              <motion.div
+                className="bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl h-full flex flex-col"
+                initial={{ opacity: 0, x: 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
                 <div>
                   <div className="text-primaryColor text-4xl mb-4">
                     <Users />
@@ -810,14 +912,19 @@ const AgentesIA: React.FC = () => {
                   Si ellos ya transformaron su negocio, tú también puedes
                   hacerlo.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
-
         {/* Final CTA Section */}
         <section id="final-cta" className="py-20 sm:py-24 bg-black">
-          <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            className="max-w-4xl mx-auto px-6 text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <h2 className="text-3xl sm:text-5xl font-bold text-white leading-tight">
               ¿Listo para Dejar de Perder Clientes y Tiempo?
             </h2>
@@ -825,17 +932,22 @@ const AgentesIA: React.FC = () => {
               Es hora de implementar la solución de IA que trabaja por ti 24/7,
               convierte más y te devuelve el control de tu negocio.
             </p>
-            <div className="mt-10">
+            <motion.div
+              className="mt-10"
+              initial={{ opacity: 0, scale: 0.7 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.8 }}
+              transition={{ duration: 0.7, ease: "backOut", delay: 0.4 }}
+            >
               <button
                 onClick={() => setIsModalOpen(true)}
                 className="bg-primaryColor hover:bg-red-700 text-white font-bold py-4 px-10 rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105 inline-block text-xl"
               >
                 Quiero Implementar mi Agente de IA Ahora
               </button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </section>
-
         {/* --- SECCIÓN DE PRECIOS AÑADIDA --- 
         <section id="pricing" className="py-16 sm:py-24 bg-darkBgColor">
           <div className="max-w-7xl mx-auto px-6">
@@ -955,7 +1067,6 @@ const AgentesIA: React.FC = () => {
           </div>
         </section>
         */}
-
         {/* FAQ Section */}
         <section id="faq" className="py-16 sm:py-24 bg-darkBgColor">
           <div className="max-w-4xl mx-auto px-6">
@@ -979,32 +1090,53 @@ const AgentesIA: React.FC = () => {
           </div>
         </section>
 
-        {/* Contact Section */}
         <section id="contact" className="py-16 sm:py-24 bg-black">
           <div className="max-w-3xl mx-auto px-6 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8">
+            <motion.h2
+              className="text-3xl sm:text-4xl font-bold text-white mb-8"
+              initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
               Agenda tu Demostración Gratuita Ahora
-            </h2>
-            <p className="text-lg text-gray-300 mb-10">
+            </motion.h2>
+            <motion.p
+              className="text-lg text-gray-300 mb-10"
+              initial={{ opacity: 0, y: -40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            >
               Elige la fecha y hora que mejor te convenga. En menos de 30
               minutos, descubrirás cómo nuestros agentes de IA pueden
               transformar tu negocio.
-            </p>
+            </motion.p>
 
-            <div
+            <motion.div
               className="bg-darkBgColor rounded-xl shadow-xl overflow-hidden"
               style={{ height: "700px" }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.9, ease: "easeOut", delay: 0.4 }}
             >
               <CalendlyEmbed url="https://calendly.com/henryaf0519/reunion-demo-orvex" />
-            </div>
+            </motion.div>
 
-            <p className="mt-8 text-sm text-gray-500">
+            <motion.p
+              className="mt-8 text-sm text-gray-500"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.8 }}
+              transition={{ duration: 1.0, ease: "easeOut", delay: 0.6 }}
+            >
               Al agendar, aceptas nuestra{" "}
               <span className="text-primaryColor hover:underline cursor-pointer">
                 Política de Privacidad
               </span>
               .
-            </p>
+            </motion.p>
           </div>
         </section>
       </div>

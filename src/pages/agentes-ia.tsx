@@ -307,8 +307,8 @@ const AgentesIA: React.FC = () => {
               {/* Columna Derecha: Texto con animación */}
               <motion.div
                 className="text-center lg:text-left"
-                initial={{ opacity: 0, x: 50 }} // Inicia invisible y a la derecha
-                whileInView={{ opacity: 1, x: 0 }} // Se vuelve visible y se mueve a su posición
+                initial={{ opacity: 0, y: 50 }} // Inicia invisible y a la derecha
+                whileInView={{ opacity: 1, y: 0 }} // Se vuelve visible y se mueve a su posición
                 viewport={{ once: true, amount: 0.3 }} // Se anima una vez cuando el 30% del componente está visible
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.0 }} // Retraso para que aparezca después de la imagen
               >

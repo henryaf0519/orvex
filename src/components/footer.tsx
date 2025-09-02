@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReactDOM from "react-dom";
 //import InstagramIcon from "/assets/Iwhite.svg";
-import Whastsapp from "/assets/ww.svg";
+//import Whastsapp from "/assets/ww.svg";
 import SignupFormDemo from "./form/form";
 
 const Footer = () => {

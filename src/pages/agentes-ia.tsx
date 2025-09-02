@@ -231,74 +231,59 @@ const AgentesIA: React.FC = () => {
       >
         {/* Hero Section */}
         <section
-  id="inicio"
-  className="relative min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-20 text-center bg-darkBgColor"
->
-  {/* ESTE ES EL ARREGLO PRINCIPAL:
-    Este div envuelve el texto y tiene una altura mínima (`min-h`).
-    Esto reserva el espacio vertical desde el principio, evitando que el video de abajo "salte"
-    cuando el texto del título crece y ocupa más líneas.
-  */}
-  <div className="relative z-10 w-full max-w-5xl flex flex-col items-center justify-center min-h-[320px] sm:min-h-[280px]">
-    
-    {/* Se eliminó la altura fija del h1 para que el texto fluya naturalmente dentro del espacio ya reservado */}
-    <motion.h1
-      ref={containerRef}
-      className="text-4xl sm:text-5xl md:text-5xl font-extrabold leading-tight text-white my-4"
-    >
-      <span className="text-primaryColor">Orvex:</span> {displayedText}
-      <motion.span
-        className="inline-block w-1 h-12 bg-white ml-1 align-middle"
-        animate={
-          typingFinished ? { opacity: [0, 1, 0] } : { opacity: [0, 1] }
-        }
-        transition={
-          typingFinished
-            ? { repeat: Infinity, duration: 1.2 }
-            : { repeat: Infinity, duration: 0.6, ease: "linear" }
-        }
-      />
-    </motion.h1>
+          id="inicio"
+          className="relative min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-20 text-center bg-darkBgColor"
+        >
+          <div className="relative z-10 w-full max-w-5xl flex flex-col items-center justify-center min-h-[320px] sm:min-h-[280px]">
+            {/* Se eliminó la altura fija del h1 para que el texto fluya naturalmente dentro del espacio ya reservado */}
+            <h1
+              ref={containerRef}
+              className="text-4xl sm:text-5xl md:text-5xl font-extrabold leading-tight text-white my-4"
+            >
+              <span className="text-primaryColor">Orvex:</span> {displayedText}
+              <motion.span
+                className="inline-block w-1 h-12 bg-white ml-1 align-middle"
+                animate={
+                  typingFinished ? { opacity: [0, 1, 0] } : { opacity: [0, 1] }
+                }
+                transition={
+                  typingFinished
+                    ? { repeat: Infinity, duration: 1.2 }
+                    : { repeat: Infinity, duration: 0.6, ease: "linear" }
+                }
+              />
+            </h1>
 
-    <motion.p
-      className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut", delay: 1.5 }}
-    >
-      En los próximos 7 días, tu negocio puede dejar de perder dinero
-      por citas canceladas y empezar a cobrar por adelantado... sin
-      contratar personal, sin aprender tecnología y sin perder más
-      tiempo en WhatsApp, web o donde lo necesites.
-    </motion.p>
-  </div>
+            <p
+              className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
+            >
+              En los próximos 7 días, tu negocio puede dejar de perder dinero
+              por citas canceladas y empezar a cobrar por adelantado... sin
+              contratar personal, sin aprender tecnología y sin perder más
+              tiempo en WhatsApp, web o donde lo necesites.
+            </p>
+          </div>
 
-  {/* El resto de la sección no necesita cambios */}
-  <motion.div
-    className="relative z-10 w-full max-w-5xl mx-auto"
-    initial={{ opacity: 0, scale: 0.95 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.9, ease: "easeOut", delay: 2.0 }}
-  >
-    <div className="aspect-video bg-black rounded-lg overflow-hidden border-2 border-gray-800 shadow-2xl">
-      <WistiaPlayer mediaId="b0dckf0a2r" className="w-full h-full" />
-    </div>
-  </motion.div>
+          {/* El resto de la sección no necesita cambios */}
+          <div
+            className="relative z-10 w-full max-w-5xl mx-auto"
+          >
+            <div className="aspect-video bg-black rounded-lg overflow-hidden border-2 border-gray-800 shadow-2xl">
+              <WistiaPlayer mediaId="b0dckf0a2r" className="w-full h-full" />
+            </div>
+          </div>
 
-  <motion.div
-    className="relative z-10 w-full mt-8"
-    initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, ease: "backOut", delay: 2.5 }}
-  >
-    <button
-      onClick={() => setIsModalOpen(true)}
-      className="bg-primaryColor hover:bg-red-700 text-white font-bold py-3 px-8 text-base md:py-4 md:px-10 md:text-lg rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105"
-    >
-      Solicita una Demostración Gratuita
-    </button>
-  </motion.div>
-</section>
+          <div
+            className="relative z-10 w-full mt-8"         
+          >
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="bg-primaryColor hover:bg-red-700 text-white font-bold py-3 px-8 text-base md:py-4 md:px-10 md:text-lg rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105"
+            >
+              Solicita una Demostración Gratuita
+            </button>
+          </div>
+        </section>
         {/* Problem Section */}
         <section className="py-16 sm:py-24 bg-darkBgColor">
           <div className="max-w-7xl mx-auto px-6">
@@ -922,12 +907,8 @@ const AgentesIA: React.FC = () => {
         </section>
         {/* Final CTA Section */}
         <section id="final-cta" className="py-20 sm:py-24 bg-black">
-          <motion.div
-            className="max-w-4xl mx-auto px-6 text-center"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+          <div
+            className="max-w-4xl mx-auto px-6 text-center" 
           >
             <h2 className="text-3xl sm:text-5xl font-bold text-white leading-tight">
               ¿Listo para Dejar de Perder Clientes y Tiempo?
@@ -936,12 +917,8 @@ const AgentesIA: React.FC = () => {
               Es hora de implementar la solución de IA que trabaja por ti 24/7,
               convierte más y te devuelve el control de tu negocio.
             </p>
-            <motion.div
+            <div
               className="mt-10"
-              initial={{ opacity: 0, scale: 0.7 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.8 }}
-              transition={{ duration: 0.7, ease: "backOut", delay: 0.4 }}
             >
               <button
                 onClick={() => setIsModalOpen(true)}
@@ -949,8 +926,8 @@ const AgentesIA: React.FC = () => {
               >
                 Quiero Implementar mi Agente de IA Ahora
               </button>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </section>
         {/* --- SECCIÓN DE PRECIOS AÑADIDA --- 
         <section id="pricing" className="py-16 sm:py-24 bg-darkBgColor">
@@ -1096,51 +1073,35 @@ const AgentesIA: React.FC = () => {
 
         <section id="contact" className="py-16 sm:py-24 bg-black">
           <div className="max-w-3xl mx-auto px-6 text-center">
-            <motion.h2
+            <h2
               className="text-3xl sm:text-4xl font-bold text-white mb-8"
-              initial={{ opacity: 0, y: -50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
             >
               Agenda tu Demostración Gratuita Ahora
-            </motion.h2>
-            <motion.p
+            </h2>
+            <p
               className="text-lg text-gray-300 mb-10"
-              initial={{ opacity: 0, y: -40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
               Elige la fecha y hora que mejor te convenga. En menos de 30
               minutos, descubrirás cómo nuestros agentes de IA pueden
               transformar tu negocio.
-            </motion.p>
+            </p>
 
-            <motion.div
+            <div
               className="bg-darkBgColor rounded-xl shadow-xl overflow-hidden"
               style={{ height: "700px" }}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.9, ease: "easeOut", delay: 0.4 }}
             >
               <CalendlyEmbed url="https://calendly.com/henryaf0519/reunion-demo-orvex" />
-            </motion.div>
+            </div>
 
-            <motion.p
+            <p
               className="mt-8 text-sm text-gray-500"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.8 }}
-              transition={{ duration: 1.0, ease: "easeOut", delay: 0.6 }}
             >
               Al agendar, aceptas nuestra{" "}
               <span className="text-primaryColor hover:underline cursor-pointer">
                 Política de Privacidad
               </span>
               .
-            </motion.p>
+            </p>
           </div>
         </section>
       </div>

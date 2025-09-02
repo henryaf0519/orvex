@@ -291,8 +291,8 @@ const AgentesIA: React.FC = () => {
               {/* Columna Izquierda: Imagen con animación */}
               <motion.div
                 className="relative flex justify-center group"
-                initial={{ opacity: 0, x: -50 }} // Inicia invisible y a la izquierda
-                whileInView={{ opacity: 1, x: 0 }} // Se vuelve visible y se mueve a su posición
+                initial={{ opacity: 0, y: -50 }} // Inicia invisible y a la izquierda
+                whileInView={{ opacity: 1, y: 0 }} // Se vuelve visible y se mueve a su posición
                 viewport={{ once: true, amount: 0.3 }} // Se anima una vez cuando el 30% del componente está visible
                 transition={{ duration: 0.8, ease: "easeOut" }} // Duración y tipo de transición
               >
@@ -637,9 +637,9 @@ const AgentesIA: React.FC = () => {
                       className={item.imageOrderClass}
                       initial={{
                         opacity: 0,
-                        x: item.imageOrderClass ? 100 : -100,
+                        y: 100,
                       }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.3 }}
                       transition={{ duration: 0.8, ease: "easeOut" }}
                     >
@@ -657,9 +657,9 @@ const AgentesIA: React.FC = () => {
                       }`}
                       initial={{
                         opacity: 0,
-                        x: item.imageOrderClass ? -100 : 100,
+                        y: -100,
                       }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.3 }}
                       transition={{
                         duration: 0.8,
@@ -734,8 +734,8 @@ const AgentesIA: React.FC = () => {
               {/* Columna Derecha: Plataforma CRM con animación */}
               <motion.div
                 className="bg-gray-900 p-8 rounded-2xl border border-gray-700 shadow-2xl"
-                initial={{ opacity: 0, x: 100 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: -50 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
               >
@@ -795,8 +795,8 @@ const AgentesIA: React.FC = () => {
               {/* Columna principal (izquierda) con animación */}
               <motion.div
                 className="lg:col-span-2 bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl"
-                initial={{ opacity: 0, x: -100 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: -50 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
@@ -811,8 +811,8 @@ const AgentesIA: React.FC = () => {
                   {/* Tarjeta "Asistente Humano" con animación */}
                   <motion.div
                     className="border border-gray-700 p-6 rounded-xl"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: -50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
                   >
@@ -838,8 +838,8 @@ const AgentesIA: React.FC = () => {
                   {/* Tarjeta "Agente IA ORVEX" con animación */}
                   <motion.div
                     className="border-2 border-primaryColor p-6 rounded-xl relative overflow-hidden"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: -50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
                   >
@@ -877,8 +877,8 @@ const AgentesIA: React.FC = () => {
               {/* Columna derecha con animación */}
               <motion.div
                 className="bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-2xl h-full flex flex-col"
-                initial={{ opacity: 0, x: 100 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                   initial={{ opacity: 0, y: -50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >

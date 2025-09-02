@@ -58,8 +58,7 @@ const Footer = () => {
                   className="w-6 h-6 object-contain"
                 />
               </a>
-                  */
-            }
+              
               
               <a
                 href="https://www.instagram.com"
@@ -73,6 +72,8 @@ const Footer = () => {
                   className="w-6 h-6 object-contain"
                 />
               </a>
+                  */
+            }
            
             </div>
 

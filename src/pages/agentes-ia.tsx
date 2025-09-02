@@ -231,70 +231,74 @@ const AgentesIA: React.FC = () => {
       >
         {/* Hero Section */}
         <section
-          id="inicio"
-          className="relative min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-20 text-center bg-darkBgColor"
-        >
-          {/* 1. Contenido de Texto (Parte Superior) */}
-          <div className="relative z-10 w-full max-w-5xl">
-            {/* El h1 ya tiene su propia animación de tipeo, la dejamos como está */}
-            <motion.h1
-              ref={containerRef}
-              className="text-4xl sm:text-5xl md:text-5xl font-extrabold leading-tight text-white my-4"
-            >
-              <span className="text-primaryColor">Orvex:</span> {displayedText}
-              <motion.span
-                className="inline-block w-1 h-12 bg-white ml-1"
-                animate={
-                  typingFinished ? { opacity: [0, 1, 0] } : { opacity: [0, 1] }
-                }
-                transition={
-                  typingFinished
-                    ? { repeat: Infinity, duration: 1.2 }
-                    : { repeat: Infinity, duration: 0.6, ease: "linear" }
-                }
-              />
-            </motion.h1>
-            {/* Párrafo con animación */}
-            <motion.p
-              className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 1.5 }} // Retraso para que aparezca después del título
-            >
-              En los próximos 7 días, tu negocio puede dejar de perder dinero
-              por citas canceladas y empezar a cobrar por adelantado... sin
-              contratar personal, sin aprender tecnología y sin perder más
-              tiempo en WhatsApp, web o donde lo necesites.
-            </motion.p>
-          </div>
+  id="inicio"
+  className="relative min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-20 text-center bg-darkBgColor"
+>
+  {/* ESTE ES EL ARREGLO PRINCIPAL:
+    Este div envuelve el texto y tiene una altura mínima (`min-h`).
+    Esto reserva el espacio vertical desde el principio, evitando que el video de abajo "salte"
+    cuando el texto del título crece y ocupa más líneas.
+  */}
+  <div className="relative z-10 w-full max-w-5xl flex flex-col items-center justify-center min-h-[320px] sm:min-h-[280px]">
+    
+    {/* Se eliminó la altura fija del h1 para que el texto fluya naturalmente dentro del espacio ya reservado */}
+    <motion.h1
+      ref={containerRef}
+      className="text-4xl sm:text-5xl md:text-5xl font-extrabold leading-tight text-white my-4"
+    >
+      <span className="text-primaryColor">Orvex:</span> {displayedText}
+      <motion.span
+        className="inline-block w-1 h-12 bg-white ml-1 align-middle"
+        animate={
+          typingFinished ? { opacity: [0, 1, 0] } : { opacity: [0, 1] }
+        }
+        transition={
+          typingFinished
+            ? { repeat: Infinity, duration: 1.2 }
+            : { repeat: Infinity, duration: 0.6, ease: "linear" }
+        }
+      />
+    </motion.h1>
 
-          {/* 2. Contenido de Video (Parte Intermedia) con animación */}
-          <motion.div
-            className="relative z-10 w-full max-w-5xl mx-auto"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, ease: "easeOut", delay: 2.0 }} // Retraso mayor para el video
-          >
-            <div className="aspect-video bg-black rounded-lg overflow-hidden border-2 border-gray-800 shadow-2xl">
-              <WistiaPlayer mediaId="b0dckf0a2r" className="w-full h-full" />
-            </div>
-          </motion.div>
+    <motion.p
+      className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut", delay: 1.5 }}
+    >
+      En los próximos 7 días, tu negocio puede dejar de perder dinero
+      por citas canceladas y empezar a cobrar por adelantado... sin
+      contratar personal, sin aprender tecnología y sin perder más
+      tiempo en WhatsApp, web o donde lo necesites.
+    </motion.p>
+  </div>
 
-          {/* 3. BOTÓN (Parte Inferior) con animación */}
-          <motion.div
-            className="relative z-10 w-full mt-8"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "backOut", delay: 2.5 }} // El último en aparecer con efecto
-          >
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="bg-primaryColor hover:bg-red-700 text-white font-bold py-3 px-8 text-base md:py-4 md:px-10 md:text-lg rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105"
-            >
-              Solicita una Demostración Gratuita
-            </button>
-          </motion.div>
-        </section>
+  {/* El resto de la sección no necesita cambios */}
+  <motion.div
+    className="relative z-10 w-full max-w-5xl mx-auto"
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.9, ease: "easeOut", delay: 2.0 }}
+  >
+    <div className="aspect-video bg-black rounded-lg overflow-hidden border-2 border-gray-800 shadow-2xl">
+      <WistiaPlayer mediaId="b0dckf0a2r" className="w-full h-full" />
+    </div>
+  </motion.div>
+
+  <motion.div
+    className="relative z-10 w-full mt-8"
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "backOut", delay: 2.5 }}
+  >
+    <button
+      onClick={() => setIsModalOpen(true)}
+      className="bg-primaryColor hover:bg-red-700 text-white font-bold py-3 px-8 text-base md:py-4 md:px-10 md:text-lg rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105"
+    >
+      Solicita una Demostración Gratuita
+    </button>
+  </motion.div>
+</section>
         {/* Problem Section */}
         <section className="py-16 sm:py-24 bg-darkBgColor">
           <div className="max-w-7xl mx-auto px-6">
@@ -308,7 +312,7 @@ const AgentesIA: React.FC = () => {
                 transition={{ duration: 0.8, ease: "easeOut" }} // Duración y tipo de transición
               >
                 <img
-                  src="/assets/chat.png"
+                  src="/assets/chat.webp"
                   alt="Agente IA gestionando un chat con un cliente"
                   className="w-full max-w-md aspect-square object-cover rounded-xl shadow-2xl"
                 />
@@ -536,7 +540,7 @@ const AgentesIA: React.FC = () => {
                 {/* Columna Derecha: Imagen */}
                 <div className="hidden lg:block lg:relative">
                   <motion.img
-                    src="/assets/orvexchat.png"
+                    src="/assets/orvexchat.webp"
                     alt="Un equipo profesional colaborando gracias a la eficiencia de Orvex"
                     className="absolute inset-0 w-full h-full object-cover"
                     initial={{ opacity: 0 }}
@@ -589,7 +593,7 @@ const AgentesIA: React.FC = () => {
               <div className="space-y-24">
                 {[
                   {
-                    imageSrc: "/assets/automatizacion.png",
+                    imageSrc: "/assets/automatizacion.webp",
                     alt: "Dashboard de automatización",
                     title: "Automatización sin complicaciones",
                     description:
@@ -598,7 +602,7 @@ const AgentesIA: React.FC = () => {
                     imageOrderClass: "lg:order-last",
                   },
                   {
-                    imageSrc: "/assets/calendar.png",
+                    imageSrc: "/assets/fullcalendar.webp",
                     alt: "Calendario con citas pagadas",
                     title: "Agenda Llena + Cobro Asegurado",
                     description:
@@ -607,7 +611,7 @@ const AgentesIA: React.FC = () => {
                     imageOrderClass: "",
                   },
                   {
-                    imageSrc: "/assets/business.png",
+                    imageSrc: "/assets/business.webp",
                     alt: "Gráfico de crecimiento 24/7",
                     title:
                       "Tu Negocio Activo las 24 Horas, Sin Contratar Personal",
@@ -617,7 +621,7 @@ const AgentesIA: React.FC = () => {
                     imageOrderClass: "lg:order-last",
                   },
                   {
-                    imageSrc: "/assets/sales.png",
+                    imageSrc: "/assets/sales.webp",
                     alt: "Impulso de ventas con IA",
                     title: "Tu Mejor Vendedor, Siempre Activo",
                     description:

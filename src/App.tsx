@@ -5,6 +5,7 @@ import Layout from "./components/layout";
 import Home from "./pages/home";
 import AgentesIA from "./pages/agentes-ia";
 import FinishPage from "./pages/finish";
+import AgendarDemo from "./pages/agendarDemo";
 
 
 
@@ -18,6 +19,7 @@ const App: React.FC = () => {
       {/* Rutas secundarias */}
       <Route path="landing" element={<AgentesIA />} />
       <Route path="finish" element={<FinishPage />} />
+      <Route path="schedule" element={<AgendarDemo />} />
       {/* 404 */}
     </Route>
   </Routes>

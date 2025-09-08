@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom"; // Importar Link
 import { animate, useMotionValue, useMotionValueEvent } from "motion/react";
 import {
   CheckCircle,
@@ -14,8 +15,6 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import WistiaPlayer from "../components/WistiaPlayer";
-import CalendlyEmbed from "../components/CalendlyEmbed";
-import CalendlyModal from "../components/CalendlyModal";
 
 // --- DATOS CENTRALIZADOS ---
 
@@ -40,52 +39,6 @@ const benefitsData = [
       "Delega las tareas repetitivas a tu agente de IA y libera tiempo valioso para dedicarlo a la estrategia y el crecimiento de tu negocio.",
   },
 ];
-
-// Datos para la sección de Precios
-/*const pricingPlans = [
-  {
-    name: "Starter",
-    description: "Ideal para pequeños negocios.",
-    price: "$35",
-    priceDetails: "USD/mes",
-    features: [
-      "1 Número WhatsApp API",
-      "5,000 Contactos 1 a 1",
-      "1 Agente de IA",
-      "10 Automatizaciones",
-    ],
-    buttonText: "Empezar Ahora",
-    isPopular: false,
-  },
-  {
-    name: "Advanced",
-    description:
-      "Ideal para negocios con equipos de trabajo que priorizan su atención al cliente por WhatsApp.",
-    price: "$50",
-    priceDetails: "USD/mes",
-    features: [
-      "1 Número WhatsApp API",
-      "3 Agentes de IA",
-      "10,000 Contactos 1 a 1",
-      "Automatizaciones Ilimitadas",
-    ],
-    buttonText: "Comprar Plan",
-    isPopular: true,
-  },
-  {
-    name: "Personalizado",
-    description: "Soluciones personalizadas para tu negocio.",
-    price: "A Convenir",
-    priceDetails: "",
-    features: [
-      "Agentes IA Pro con integraciones avanzadas",
-      "Soporte y consultoría dedicada",
-    ],
-    extraInfo: "Todo lo de Advanced, y además:",
-    buttonText: "Contactar Ventas",
-    isPopular: false,
-  },
-]; */
 
 // Datos para la sección de Preguntas Frecuentes (FAQ)
 const faqData = [
@@ -193,7 +146,6 @@ const AgentesIA: React.FC = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [typingFinished, setTypingFinished] = useState(false);
   const containerRef = useRef(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -235,7 +187,6 @@ const AgentesIA: React.FC = () => {
           className="relative min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-20 text-center bg-darkBgColor"
         >
           <div className="relative z-10 w-full max-w-5xl flex flex-col items-center justify-center min-h-[320px] sm:min-h-[280px]">
-            {/* Se eliminó la altura fija del h1 para que el texto fluya naturalmente dentro del espacio ya reservado */}
             <h1
               ref={containerRef}
               className="text-4xl sm:text-5xl md:text-5xl font-extrabold leading-tight text-white my-4"
@@ -264,7 +215,6 @@ const AgentesIA: React.FC = () => {
             </p>
           </div>
 
-          {/* El resto de la sección no necesita cambios */}
           <div
             className="relative z-10 w-full max-w-5xl mx-auto"
           >
@@ -276,12 +226,12 @@ const AgentesIA: React.FC = () => {
           <div
             className="relative z-10 w-full mt-8"         
           >
-            <button
-              onClick={() => setIsModalOpen(true)}
+            <Link
+              to="/schedule"
               className="bg-primaryColor hover:bg-red-700 text-white font-bold py-3 px-8 text-base md:py-4 md:px-10 md:text-lg rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105"
             >
               Solicita una Demostración Gratuita
-            </button>
+            </Link>
           </div>
         </section>
         {/* Problem Section */}
@@ -291,10 +241,10 @@ const AgentesIA: React.FC = () => {
               {/* Columna Izquierda: Imagen con animación */}
               <motion.div
                 className="relative flex justify-center group"
-                initial={{ opacity: 0, y: -50 }} // Inicia invisible y a la izquierda
-                whileInView={{ opacity: 1, y: 0 }} // Se vuelve visible y se mueve a su posición
-                viewport={{ once: true, amount: 0.3 }} // Se anima una vez cuando el 30% del componente está visible
-                transition={{ duration: 0.8, ease: "easeOut" }} // Duración y tipo de transición
+                initial={{ opacity: 0, y: -50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 <img
                   src="/assets/chat.webp"
@@ -307,10 +257,10 @@ const AgentesIA: React.FC = () => {
               {/* Columna Derecha: Texto con animación */}
               <motion.div
                 className="text-center lg:text-left"
-                initial={{ opacity: 0, y: 50 }} // Inicia invisible y a la derecha
-                whileInView={{ opacity: 1, y: 0 }} // Se vuelve visible y se mueve a su posición
-                viewport={{ once: true, amount: 0.3 }} // Se anima una vez cuando el 30% del componente está visible
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.0 }} // Retraso para que aparezca después de la imagen
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.0 }}
               >
                 <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
                   ¿Tu día a día se siente como una carrera{" "}
@@ -513,12 +463,12 @@ const AgentesIA: React.FC = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: "backOut", delay: 1.0 }}
                   >
-                    <button
-                      onClick={() => setIsModalOpen(true)}
+                    <Link
+                      to="/schedule"
                       className="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105"
                     >
                       Quiero mi Agente Ahora
-                    </button>
+                    </Link>
                   </motion.div>
                 </div>
 
@@ -674,12 +624,12 @@ const AgentesIA: React.FC = () => {
                         {item.description}
                       </p>
                       <div className="mt-8 flex justify-center lg:justify-start">
-                        <button
-                          onClick={() => setIsModalOpen(true)}
+                        <Link
+                          to="/schedule"
                           className="bg-primaryColor text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-primaryColor/50"
                         >
                           {item.buttonText}
-                        </button>
+                        </Link>
                       </div>
                     </motion.div>
                   </div>
@@ -920,134 +870,16 @@ const AgentesIA: React.FC = () => {
             <div
               className="mt-10"
             >
-              <button
-                onClick={() => setIsModalOpen(true)}
+              <Link
+                to="/schedule"
                 className="bg-primaryColor hover:bg-red-700 text-white font-bold py-4 px-10 rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105 inline-block text-xl"
               >
                 Quiero Implementar mi Agente de IA Ahora
-              </button>
+              </Link>
             </div>
           </div>
         </section>
-        {/* --- SECCIÓN DE PRECIOS AÑADIDA --- 
-        <section id="pricing" className="py-16 sm:py-24 bg-darkBgColor">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white">
-                Un Plan para Cada Etapa de tu Negocio
-              </h2>
-              <p className="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">
-                Elige la potencia que necesitas hoy y escala con nosotros
-                mañana. Sin complicaciones.
-              </p>
-            </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-              {pricingPlans.map((plan, index) => (
-                <div
-                  key={index}
-                  className={`bg-gray-900 p-8 rounded-2xl border h-full flex flex-col shadow-lg 
-                            ${
-                              plan.isPopular
-                                ? "border-2 border-primaryColor relative scale-105 shadow-2xl"
-                                : "border-gray-800"
-                            }`}
-                >
-                  {plan.isPopular && (
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primaryColor text-white text-sm font-bold px-4 py-1 rounded-full">
-                      Más Popular
-                    </div>
-                  )}
-                  <h3 className="text-2xl font-semibold text-white">
-                    {plan.name}
-                  </h3>
-                  <p className="text-primaryColor font-semibold mt-1">
-                    {plan.description}
-                  </p>
-                  <div className="my-8">
-                    <span
-                      className={`font-bold text-white ${
-                        plan.priceDetails ? "text-5xl" : "text-4xl"
-                      }`}
-                    >
-                      {plan.price}
-                    </span>
-                    {plan.priceDetails && (
-                      <span className="text-lg text-gray-400">
-                        {" "}
-                        {plan.priceDetails}
-                      </span>
-                    )}
-                  </div>
-                  <div className="flex-grow">
-                    <h4 className="font-bold text-white text-lg mb-4">
-                      {plan.extraInfo || "Características Principales:"}
-                    </h4>
-                    <ul className="space-y-3 text-gray-300 mb-6">
-                      {plan.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-3">
-                          <CheckCircle className="text-green-500 flex-shrink-0" />{" "}
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    {plan.name !== "Personalizado" && (
-                      <>
-                        <h4 className="font-bold text-white text-lg mb-4 border-t border-gray-700 pt-6">
-                          Incluido en todos los planes:
-                        </h4>
-                        <ul className="space-y-3 text-gray-300">
-                          <li className="flex items-start gap-3">
-                            <CheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-semibold">
-                                WhatsApp Business API Gratuita:
-                              </span>{" "}
-                              Te ayudamos con la configuración y la verificación
-                              oficial (sello azul).
-                            </div>
-                          </li>
-                          <li className="flex items-start gap-3">
-                            <CheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-semibold">
-                                Bandeja de Entrada Omnicanal:
-                              </span>{" "}
-                              Gestiona WhatsApp, Instagram, Messenger y más en
-                              un solo lugar.
-                            </div>
-                          </li>
-                          <li className="flex items-start gap-3">
-                            <CheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                            <div>
-                              <span className="font-semibold">
-                                Plataforma de Equipo:
-                              </span>{" "}
-                              Asigna conversaciones, crea plantillas y
-                              automatiza respuestas.
-                            </div>
-                          </li>
-                        </ul>
-                      </>
-                    )}
-                  </div>
-                  <button
-                    onClick={() => setIsModalOpen(true)}
-                    className={`mt-8 block w-full text-center font-bold py-3 px-8 rounded-full transition-colors duration-300 
-                                ${
-                                  plan.isPopular
-                                    ? "bg-primaryColor hover:bg-red-700 text-white"
-                                    : "bg-gray-700 hover:bg-gray-600 text-white"
-                                }`}
-                  >
-                    {plan.buttonText}
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        */}
         {/* FAQ Section */}
         <section id="faq" className="py-16 sm:py-24 bg-darkBgColor">
           <div className="max-w-4xl mx-auto px-6">
@@ -1070,46 +902,7 @@ const AgentesIA: React.FC = () => {
             </div>
           </div>
         </section>
-
-        <section id="contact" className="py-16 sm:py-24 bg-black">
-          <div className="max-w-3xl mx-auto px-6 text-center">
-            <h2
-              className="text-3xl sm:text-4xl font-bold text-white mb-8"
-            >
-              Agenda tu Demostración Gratuita Ahora
-            </h2>
-            <p
-              className="text-lg text-gray-300 mb-10"
-            >
-              Elige la fecha y hora que mejor te convenga. En menos de 30
-              minutos, descubrirás cómo nuestros agentes de IA pueden
-              transformar tu negocio.
-            </p>
-
-            <div
-              className="bg-darkBgColor rounded-xl shadow-xl overflow-hidden"
-              style={{ height: "700px" }}
-            >
-              <CalendlyEmbed url="https://calendly.com/henryaf0519/reunion-demo-orvex" />
-            </div>
-
-            <p
-              className="mt-8 text-sm text-gray-500"
-            >
-              Al agendar, aceptas nuestra{" "}
-              <span className="text-primaryColor hover:underline cursor-pointer">
-                Política de Privacidad
-              </span>
-              .
-            </p>
-          </div>
-        </section>
       </div>
-      <CalendlyModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        url="https://calendly.com/henryaf0519/reunion-demo-orvex"
-      />
     </>
   );
 };

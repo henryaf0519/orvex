@@ -1,9 +1,11 @@
 // src/pages/finish.tsx
 import React from "react";
 import { Link } from "react-router-dom";
-import { CheckCircle } from "lucide-react"; // Importa el ícono
+import { CheckCircle } from "lucide-react";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 const FinishPage: React.FC = () => {
+  usePageTitle("Orvex | Demo Confirmado");
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-darkBgColor text-white text-center px-4 overflow-hidden">
       <div className="relative bg-gray-900/50 p-8 md:p-12 rounded-2xl border border-primaryColor/30 shadow-2xl max-w-2xl w-full">

@@ -6,23 +6,24 @@ import Home from "./pages/home";
 import AgentesIA from "./pages/agentes-ia";
 import FinishPage from "./pages/finish";
 import AgendarDemo from "./pages/agendarDemo";
-
-
+import AnalyticsTracker from "./components/AnalyticsTracker";
 
 const App: React.FC = () => {
-  
   return (
-    <Routes>
-    <Route path="/" element={<Layout />}>
-      {/* Ruta principal carga Home */}
-      <Route index element={<Home />} />
-      {/* Rutas secundarias */}
-      <Route path="landing" element={<AgentesIA />} />
-      <Route path="finish" element={<FinishPage />} />
-      <Route path="schedule" element={<AgendarDemo />} />
-      {/* 404 */}
-    </Route>
-  </Routes>
+    <>
+      <AnalyticsTracker />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          {/* Ruta principal carga Home */}
+          <Route index element={<Home />} />
+          {/* Rutas secundarias */}
+          <Route path="landing" element={<AgentesIA />} />
+          <Route path="finish" element={<FinishPage />} />
+          <Route path="schedule" element={<AgendarDemo />} />
+          {/* 404 */}
+        </Route>
+      </Routes>
+    </>
   );
 };
 

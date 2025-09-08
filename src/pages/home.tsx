@@ -15,8 +15,10 @@ import { useScroll, useTransform } from "motion/react";
 import { TitleAnimate } from "../components/titleAnimate";
 import MobileTestimonialsCarousel from "../components/mobileTestimonies";
 import { CardBody, CardContainer, CardItem } from "../components/3d-card";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 const Home: React.FC = () => {
+  usePageTitle("Orvex | Potencia Tu Negocio");
   const [isMobile, setIsMobile] = useState(false);
   const updateDevice = () => {
     setIsMobile(window.innerWidth <= 768);

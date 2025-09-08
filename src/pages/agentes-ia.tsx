@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from 'react-router-dom';
 import { Link } from "react-router-dom"; // Importar Link
 import { animate, useMotionValue, useMotionValueEvent } from "motion/react";
 import {
@@ -15,6 +16,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import WistiaPlayer from "../components/WistiaPlayer";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 // --- DATOS CENTRALIZADOS ---
 
@@ -140,12 +142,23 @@ const BenefitCard = ({
 );
 
 const AgentesIA: React.FC = () => {
+  usePageTitle("Orvex | Landing");
   const fullText =
     " Automatiza tu Agenda y Multiplica tus Citas sin Contratar Personal.";
   const progress = useMotionValue(0);
   const [displayedText, setDisplayedText] = useState("");
   const [typingFinished, setTypingFinished] = useState(false);
   const containerRef = useRef(null);
+
+  const trackButtonClick = (buttonName: string) => {
+    if (window.gtag) {
+      window.gtag("event", "click", {
+        event_category: "CTA_Agentes_IA",
+        event_label: buttonName,
+      });
+      console.log(`GA Event Tracked: ${buttonName}`); // Para que puedas verificar en la consola
+    }
+  };
 
   useEffect(() => {
     const el = containerRef.current;
@@ -229,6 +242,7 @@ const AgentesIA: React.FC = () => {
             <Link
               to="/schedule"
               className="bg-primaryColor hover:bg-red-700 text-white font-bold py-3 px-8 text-base md:py-4 md:px-10 md:text-lg rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105"
+              onClick={() => trackButtonClick("Hero - Solicita Demo Gratuita")}
             >
               Solicita una Demostración Gratuita
             </Link>
@@ -466,6 +480,7 @@ const AgentesIA: React.FC = () => {
                     <Link
                       to="/schedule"
                       className="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105"
+                      onClick={() => trackButtonClick("Quiero mi Agente Ahora")}
                     >
                       Quiero mi Agente Ahora
                     </Link>
@@ -627,6 +642,7 @@ const AgentesIA: React.FC = () => {
                         <Link
                           to="/schedule"
                           className="bg-primaryColor text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-primaryColor/50"
+                          onClick={() => trackButtonClick(`Transformacion - ${item.buttonText}`)}
                         >
                           {item.buttonText}
                         </Link>
@@ -873,6 +889,7 @@ const AgentesIA: React.FC = () => {
               <Link
                 to="/schedule"
                 className="bg-primaryColor hover:bg-red-700 text-white font-bold py-4 px-10 rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105 inline-block text-xl"
+                onClick={() => trackButtonClick(`Implementar Agente IA Finish`)}
               >
                 Quiero Implementar mi Agente de IA Ahora
               </Link>

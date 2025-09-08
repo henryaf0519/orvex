@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useLocation } from 'react-router-dom';
 import { Link } from "react-router-dom"; // Importar Link
 import { animate, useMotionValue, useMotionValueEvent } from "motion/react";
 import {
@@ -151,6 +150,7 @@ const AgentesIA: React.FC = () => {
   const containerRef = useRef(null);
 
   const trackButtonClick = (buttonName: string) => {
+    console.log(`Button clicked: ${buttonName}`);
     if (window.gtag) {
       window.gtag("event", "click", {
         event_category: "CTA_Agentes_IA",

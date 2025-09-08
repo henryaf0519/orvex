@@ -12,14 +12,16 @@ declare namespace JSX {
 }
 
 interface Window {
-  gtag: (
-    event: 'config',
+  // Para las vistas de página
+  gtag(
+    command: 'config',
     trackingId: string,
     config: {
       page_path: string;
     }
-  ) => void;
+  ): void;
 
+  // Para los eventos de clic
   gtag(
     command: 'event',
     action: string,

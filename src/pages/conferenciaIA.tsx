@@ -13,7 +13,7 @@ const ConferenciaIA: React.FC = () => {
   const features = [
     {
       title: "Gestión de Leads Simplificada",
-      description: "Olvídate de los Excel. Visualiza cada oportunidad en un table inteligente para filtrar tus leads",
+      description: "Olvídate de los Excel. Visualiza cada oportunidad en un tablero inteligente para filtrar tus leads.",
       image: "/assets/crm.png",
       icon: <Users className="text-primaryColor" size={24} />,
       align: "right"
@@ -41,7 +41,7 @@ const ConferenciaIA: React.FC = () => {
     },
     {
       title: "Marketing Automatizado",
-      description: "Envía campañas masivas personalizadas y recurrentes  con un solo clic.",
+      description: "Envía campañas masivas personalizadas y recurrentes con un solo clic.",
       image: "/assets/marketing.png",
       icon: <BarChart className="text-primaryColor" size={24} />,
       align: "right"
@@ -49,11 +49,11 @@ const ConferenciaIA: React.FC = () => {
   ];
 
   return (
-    <div className="bg-black min-h-screen font-sans text-white selection:bg-primaryColor selection:text-white pb-20">
+    <div className="bg-black min-h-screen font-sans text-white selection:bg-primaryColor selection:text-white pb-12 md:pb-20 overflow-x-hidden">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primaryColor/20 blur-[120px] rounded-full pointer-events-none" />
+      <section className="relative pt-28 pb-12 md:pt-32 md:pb-20 px-4 md:px-6 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[400px] bg-primaryColor/20 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
         
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <motion.div
@@ -61,25 +61,27 @@ const ConferenciaIA: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-block py-1 px-3 rounded-full bg-gray-900 border border-gray-700 text-sm text-gray-300 mb-6">
-             Bienvenido a la evolución de tu negocio
+            <span className="inline-block py-1 px-3 rounded-full bg-gray-900 border border-gray-700 text-xs md:text-sm text-gray-300 mb-4 md:mb-6">
+               Bienvenido a la evolución de tu negocio
             </span>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent">
-              El Cerebro Digital <br /> de tu Empresa
+            
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent px-2">
+              El Cerebro Digital <br className="hidden md:block" /> de tu Empresa
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+            
+            <p className="text-base md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-10 px-2">
               Has visto el futuro en la conferencia. Ahora experiméntalo. 
               Orvex centraliza, automatiza y escala tu operación sin que muevas un dedo.
             </p>
 
-            {/* Botón Principal */}
+            {/* Botón Principal (Hero) */}
             <motion.a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 bg-primaryColor text-white px-8 py-4 rounded-full text-xl font-bold shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] transition-all"
+              className="inline-flex items-center justify-center gap-3 bg-primaryColor text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-bold shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] transition-all w-full md:w-auto max-w-xs"
             >
               <MessageCircle size={24} />
               Probar Demo en WhatsApp
@@ -89,31 +91,31 @@ const ConferenciaIA: React.FC = () => {
       </section>
 
       {/* --- FEATURES SHOWCASE --- */}
-      <section className="max-w-7xl mx-auto px-6 space-y-24 md:space-y-32 py-10">
+      <section className="max-w-7xl mx-auto px-4 md:px-6 space-y-20 md:space-y-32 py-8 md:py-10">
         {features.map((item, index) => (
           <motion.div 
             key={index}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.7 }}
-            className={`flex flex-col md:flex-row items-center gap-10 md:gap-16 ${item.align === 'left' ? 'md:flex-row-reverse' : ''}`}
+            className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-20 ${item.align === 'left' ? 'md:flex-row-reverse' : ''}`}
           >
-            {/* Texto */}
-            <div className="flex-1 space-y-6 text-center md:text-left">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gray-900 border border-gray-800 shadow-lg">
+            {/* Texto: Le damos menos ancho (40% aprox) para priorizar la imagen */}
+            <div className="w-full md:w-5/12 space-y-4 md:space-y-6 text-center md:text-left">
+              <div className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-900 border border-gray-800 shadow-lg">
                 {item.icon}
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight px-2 md:px-0">
                 {item.title}
               </h2>
-              <p className="text-lg text-gray-400 leading-relaxed">
+              <p className="text-base md:text-lg text-gray-400 leading-relaxed px-2 md:px-0">
                 {item.description}
               </p>
             </div>
 
-            {/* Imagen con efecto glass */}
-            <div className="flex-1 w-full relative group">
+            {/* Imagen: Ahora ocupa más espacio (60% aprox) y eliminamos padding extra en móvil */}
+            <div className="w-full md:w-7/12 relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-primaryColor to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                 <div className="relative bg-gray-900 ring-1 ring-white/10 rounded-2xl overflow-hidden shadow-2xl">
                   <img 
@@ -121,7 +123,6 @@ const ConferenciaIA: React.FC = () => {
                     alt={item.title} 
                     className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
                   />
-                  {/* Overlay gradiente sutil sobre la imagen */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
                 </div>
             </div>
@@ -130,20 +131,20 @@ const ConferenciaIA: React.FC = () => {
       </section>
 
       {/* --- FINAL CTA --- */}
-      <section className="py-24 px-6 text-center">
+      <section className="py-16 md:py-24 px-4 md:px-6 text-center">
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto bg-gradient-to-b from-gray-900 to-black border border-gray-800 p-10 md:p-16 rounded-3xl relative overflow-hidden"
+          className="max-w-4xl mx-auto bg-gradient-to-b from-gray-900 to-black border border-gray-800 p-8 md:p-16 rounded-3xl relative overflow-hidden"
         >
           {/* Fondo decorativo */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primaryColor/10 blur-[80px] rounded-full"></div>
+          <div className="absolute top-0 right-0 w-40 h-40 md:w-64 md:h-64 bg-primaryColor/10 blur-[60px] md:blur-[80px] rounded-full"></div>
           
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 relative z-10">
+          <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6 relative z-10">
             ¿Listo para automatizar lo aburrido?
           </h2>
-          <p className="text-xl text-gray-400 mb-10 relative z-10">
+          <p className="text-base md:text-xl text-gray-400 mb-8 md:mb-10 relative z-10 px-2">
             Interactúa con nuestra IA ahora mismo en WhatsApp y mira cómo agenda, vende y responde en segundos.
           </p>
           
@@ -151,12 +152,12 @@ const ConferenciaIA: React.FC = () => {
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-10 inline-flex items-center gap-2 text-white bg-[#25D366] hover:bg-[#20BD5C] px-8 py-4 rounded-full text-lg font-bold transition-all shadow-lg hover:shadow-green-500/30"
+            className="relative z-10 inline-flex items-center justify-center gap-2 text-white bg-[#25D366] hover:bg-[#20BD5C] px-6 py-2 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold transition-all shadow-lg hover:shadow-green-500/30 w-full md:w-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <MessageCircle size={24} fill="white" />
-            Hablar con Orvex en WhatsApp
+            Hablar con Orvex
             <ArrowRight size={20} />
           </motion.a>
         </motion.div>

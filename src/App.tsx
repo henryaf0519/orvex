@@ -7,6 +7,7 @@ import AgentesIA from "./pages/agentes-ia";
 import FinishPage from "./pages/finish";
 import AgendarDemo from "./pages/agendarDemo";
 import AnalyticsTracker from "./components/AnalyticsTracker";
+import ConferenciaIA from "./pages/conferenciaIA";
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,8 @@ const App: React.FC = () => {
           <Route path="landing" element={<AgentesIA />} />
           <Route path="finish" element={<FinishPage />} />
           <Route path="schedule" element={<AgendarDemo />} />
+          <Route path="conferenciaIA" element={<ConferenciaIA />} />
+          
           {/* 404 */}
         </Route>
       </Routes>

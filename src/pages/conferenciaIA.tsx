@@ -62,7 +62,7 @@ const ConferenciaIA: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block py-1 px-3 rounded-full bg-gray-900 border border-gray-700 text-sm text-gray-300 mb-6">
-              ✨ Bienvenido a la evolución de tu negocio
+             Bienvenido a la evolución de tu negocio
             </span>
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent">
               El Cerebro Digital <br /> de tu Empresa

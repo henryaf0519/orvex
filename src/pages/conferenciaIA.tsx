@@ -1,7 +1,7 @@
 // src/pages/conferenciaIA.tsx
 import React from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, Zap, Calendar, Users, BarChart, ArrowRight } from "lucide-react";
+import { MessageCircle, Zap, Calendar, Users, BarChart, ArrowRight, Play } from "lucide-react";
 import { usePageTitle } from "../hooks/usePageTitle";
 
 // Configuración del botón de WhatsApp
@@ -13,7 +13,7 @@ const ConferenciaIA: React.FC = () => {
   const features = [
     {
       title: "Gestión de Leads Simplificada",
-      description: "Olvídate de los Excel. Visualiza cada oportunidad en un tablero inteligente para filtrar tus leads.",
+      description: "Olvídate de los Excel. Visualiza cada oportunidad en un table inteligente para filtrar tus leads.",
       image: "/assets/crm.png",
       icon: <Users className="text-primaryColor" size={24} />,
       align: "right"
@@ -52,7 +52,7 @@ const ConferenciaIA: React.FC = () => {
     <div className="bg-black min-h-screen font-sans text-white selection:bg-primaryColor selection:text-white pb-12 md:pb-20 overflow-x-hidden">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative pt-28 pb-12 md:pt-32 md:pb-20 px-4 md:px-6 overflow-hidden">
+      <section className="relative pt-28 pb-12 md:pt-32 md:pb-10 px-4 md:px-6 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[400px] bg-primaryColor/20 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
         
         <div className="max-w-5xl mx-auto text-center relative z-10">
@@ -62,7 +62,7 @@ const ConferenciaIA: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block py-1 px-3 rounded-full bg-gray-900 border border-gray-700 text-xs md:text-sm text-gray-300 mb-4 md:mb-6">
-               Bienvenido a la evolución de tu negocio
+              ✨ Bienvenido a la evolución de tu negocio
             </span>
             
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent px-2">
@@ -90,6 +90,53 @@ const ConferenciaIA: React.FC = () => {
         </div>
       </section>
 
+      {/* --- VIDEO DEMO SECTION (NUEVA) --- */}
+      <section className="py-12 px-4 md:px-6">
+        <div className="max-w-5xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h3 className="text-2xl md:text-3xl font-bold mb-8 text-white/90 flex items-center justify-center gap-2">
+              <Play className="w-6 h-6 text-primaryColor fill-primaryColor" />
+              Mira la magia en acción
+            </h3>
+
+            {/* Contenedor estilo "iPhone" para el video */}
+            <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[10px] md:border-[14px] rounded-[2.5rem] w-full max-w-[300px] md:max-w-[320px] shadow-2xl shadow-primaryColor/20">
+                {/* Cámara/Notch */}
+                <div className="h-[32px] w-[3px] bg-gray-800 absolute -start-[12px] md:-start-[17px] top-[72px] rounded-s-lg"></div>
+                <div className="h-[46px] w-[3px] bg-gray-800 absolute -start-[12px] md:-start-[17px] top-[124px] rounded-s-lg"></div>
+                <div className="h-[46px] w-[3px] bg-gray-800 absolute -start-[12px] md:-start-[17px] top-[178px] rounded-s-lg"></div>
+                <div className="h-[64px] w-[3px] bg-gray-800 absolute -end-[12px] md:-end-[17px] top-[142px] rounded-e-lg"></div>
+                
+                <div className="rounded-[2rem] overflow-hidden w-full bg-black aspect-[9/19] relative">
+                    {/* Aquí va el video. Asegúrate de tener el archivo en public/assets/demo-whatsapp.mp4 */}
+                    <video 
+                        className="w-full h-full object-cover" 
+                        src="/assets/demo.mp4" 
+                        autoPlay 
+                        loop 
+                        muted 
+                        playsInline
+                        poster="/assets/chat.png" // Imagen de carga mientras carga el video
+                    >
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                    
+                    {/* Gradiente inferior para que se integre mejor */}
+                    <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
+                </div>
+            </div>
+            <p className="text-sm text-gray-500 mt-4">
+              * Grabación real de nuestro agente Orvex en WhatsApp
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* --- FEATURES SHOWCASE --- */}
       <section className="max-w-7xl mx-auto px-4 md:px-6 space-y-20 md:space-y-32 py-8 md:py-10">
         {features.map((item, index) => (
@@ -101,7 +148,7 @@ const ConferenciaIA: React.FC = () => {
             transition={{ duration: 0.7 }}
             className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-20 ${item.align === 'left' ? 'md:flex-row-reverse' : ''}`}
           >
-            {/* Texto: Le damos menos ancho (40% aprox) para priorizar la imagen */}
+            {/* Texto */}
             <div className="w-full md:w-5/12 space-y-4 md:space-y-6 text-center md:text-left">
               <div className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-900 border border-gray-800 shadow-lg">
                 {item.icon}
@@ -114,7 +161,7 @@ const ConferenciaIA: React.FC = () => {
               </p>
             </div>
 
-            {/* Imagen: Ahora ocupa más espacio (60% aprox) y eliminamos padding extra en móvil */}
+            {/* Imagen */}
             <div className="w-full md:w-7/12 relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-primaryColor to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                 <div className="relative bg-gray-900 ring-1 ring-white/10 rounded-2xl overflow-hidden shadow-2xl">
@@ -148,6 +195,7 @@ const ConferenciaIA: React.FC = () => {
             Interactúa con nuestra IA ahora mismo en WhatsApp y mira cómo agenda, vende y responde en segundos.
           </p>
           
+          {/* BOTÓN VERDE MODIFICADO */}
           <motion.a
             href={WHATSAPP_LINK}
             target="_blank"

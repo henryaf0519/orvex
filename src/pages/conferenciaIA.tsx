@@ -5,7 +5,7 @@ import { MessageCircle, Zap, Calendar, Users, BarChart, ArrowRight, Play } from 
 import { usePageTitle } from "../hooks/usePageTitle";
 
 // Configuración del botón de WhatsApp
-const WHATSAPP_LINK = "https://wa.me/573000000000?text=Hola,%20vengo%20de%20la%20conferencia%20y%20quiero%20ver%20la%20magia%20de%20Orvex.";
+const WHATSAPP_LINK = "https://wa.me/573007907209?text=Hola,%20vengo%20de%20la%20conferencia%20y%20quiero%20ver%20la%20magia%20de%20Orvex.";
 
 const ConferenciaIA: React.FC = () => {
   usePageTitle("Orvex | Experiencia IA");
@@ -62,7 +62,7 @@ const ConferenciaIA: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block py-1 px-3 rounded-full bg-gray-900 border border-gray-700 text-xs md:text-sm text-gray-300 mb-4 md:mb-6">
-              ✨ Bienvenido a la evolución de tu negocio
+              Bienvenido a la evolución de tu negocio
             </span>
             
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent px-2">

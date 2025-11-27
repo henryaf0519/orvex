@@ -2,10 +2,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { MessageCircle, Zap, Calendar, Users, BarChart, ArrowRight, Play } from "lucide-react";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa"; // Importamos íconos de marca
 import { usePageTitle } from "../hooks/usePageTitle";
 
 // Configuración del botón de WhatsApp
 const WHATSAPP_LINK = "https://wa.me/573007907209?text=Hola,%20vengo%20de%20la%20conferencia%20y%20quiero%20ver%20la%20magia%20de%20Orvex.";
+const INSTAGRAM_LINK = "https://www.instagram.com/orvex.ia/";
 
 const ConferenciaIA: React.FC = () => {
   usePageTitle("Orvex | Experiencia IA");
@@ -49,8 +51,39 @@ const ConferenciaIA: React.FC = () => {
   ];
 
   return (
-    <div className="bg-black min-h-screen font-sans text-white selection:bg-primaryColor selection:text-white pb-12 md:pb-20 overflow-x-hidden">
+    <div className="bg-black min-h-screen font-sans text-white selection:bg-primaryColor selection:text-white pb-12 md:pb-20 overflow-x-hidden relative">
       
+      {/* --- BOTONES FLOTANTES (Social Media) --- */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4 items-center">
+        {/* Instagram Floating Button */}
+        <motion.a
+          href={INSTAGRAM_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.3 }}
+          className="bg-gradient-to-tr from-[#f09433] via-[#bc1888] to-[#cc2366] p-3 md:p-4 rounded-full shadow-lg hover:shadow-pink-500/30 text-white flex items-center justify-center transform transition-transform hover:scale-110"
+          title="Síguenos en Instagram"
+        >
+          <FaInstagram className="w-6 h-6 md:w-8 md:h-8" />
+        </motion.a>
+
+        {/* WhatsApp Floating Button */}
+        <motion.a
+          href={WHATSAPP_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.3 }}
+          className="bg-[#25D366] p-3 md:p-4 rounded-full shadow-lg hover:shadow-green-500/30 text-white flex items-center justify-center transform transition-transform hover:scale-110"
+          title="Chatea con nosotros"
+        >
+          <FaWhatsapp className="w-6 h-6 md:w-8 md:h-8" />
+        </motion.a>
+      </div>
+
       {/* --- HERO SECTION --- */}
       <section className="relative pt-28 pb-12 md:pt-32 md:pb-10 px-4 md:px-6 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[400px] bg-primaryColor/20 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />

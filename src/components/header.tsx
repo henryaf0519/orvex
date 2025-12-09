@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import SignupFormDemo from "./form/form";
 import {Link } from "react-router-dom";
-
+const WHATSAPP_LINK = "https://wa.me/573007907209?text=Hola,%20vengo%20de%20la%20conferencia%20y%20quiero%20ver%20la%20magia%20de%20Orvex.";
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para el menú móvil
@@ -81,17 +81,19 @@ const Header = () => {
           >
             Agentes IA
           </Link>
-          <button
+          <a
             className="px-6 py-2 rounded-full font-semibold transition-all duration-300 ease-in-out"
             style={{
               backgroundColor: primaryColor,
               color: "white",
               boxShadow: `0 4px 15px rgba(255, 0, 0, 0.4)`,
             }}
-            onClick={() => setIsModalOpen(true)}
+            href={WHATSAPP_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
           >
             Agendar Demo
-          </button>
+          </a>
         </div>
 
         {/* Botón de menú para móviles */}
@@ -167,17 +169,19 @@ const Header = () => {
           >
             Agentes IA
           </Link>
-          <button
+          <a
             className="px-6 py-2 rounded-full font-semibold transition-all duration-300 ease-in-out"
             style={{
               backgroundColor: primaryColor,
               color: "white",
               boxShadow: `0 4px 15px rgba(255, 0, 0, 0.4)`,
             }}
-            onClick={() => setIsModalOpen(true)}
+             href={WHATSAPP_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
           >
             Agendar Demo
-          </button>
+          </a>
         </div>
       )}
 

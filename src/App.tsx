@@ -18,7 +18,7 @@ const App: React.FC = () => {
           {/* Ruta principal carga Home */}
           <Route index element={<Home />} />
           {/* Rutas secundarias */}
-          <Route path="landing" element={<AgentesIA />} />
+          <Route path="landing" element={<ConferenciaIA />} />
           <Route path="finish" element={<FinishPage />} />
           <Route path="schedule" element={<AgendarDemo />} />
           <Route path="conferenciaIA" element={<ConferenciaIA />} />

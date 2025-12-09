@@ -11,11 +11,16 @@ import {
 import Header from "../components/header";
 import ToolCard from "../components/toolCards";
 import { VerticalScrollTestimonials } from "../components/testimonies";
-import { useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { TitleAnimate } from "../components/titleAnimate";
 import MobileTestimonialsCarousel from "../components/mobileTestimonies";
 import { CardBody, CardContainer, CardItem } from "../components/3d-card";
 import { usePageTitle } from "../hooks/usePageTitle";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+
+
+const WHATSAPP_LINK = "https://wa.me/573007907209?text=Hola,%20vengo%20de%20la%20conferencia%20y%20quiero%20ver%20la%20magia%20de%20Orvex.";
+const INSTAGRAM_LINK = "https://www.instagram.com/orvex.ia/";
 
 const Home: React.FC = () => {
   usePageTitle("Orvex | Potencia Tu Negocio");
@@ -285,7 +290,37 @@ const Home: React.FC = () => {
           />
         </div>
       </section>
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4 items-center">
+        {/* Instagram Floating Button */}
+        <motion.a
+          href={INSTAGRAM_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.3 }}
+          className="bg-gradient-to-tr from-[#f09433] via-[#bc1888] to-[#cc2366] p-3 md:p-4 rounded-full shadow-lg hover:shadow-pink-500/30 text-white flex items-center justify-center transform transition-transform hover:scale-110"
+          title="Síguenos en Instagram"
+        >
+          <FaInstagram className="w-6 h-6 md:w-8 md:h-8" />
+        </motion.a>
+
+        {/* WhatsApp Floating Button */}
+        <motion.a
+          href={WHATSAPP_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.3 }}
+          className="bg-[#25D366] p-3 md:p-4 rounded-full shadow-lg hover:shadow-green-500/30 text-white flex items-center justify-center transform transition-transform hover:scale-110"
+          title="Chatea con nosotros"
+        >
+          <FaWhatsapp className="w-6 h-6 md:w-8 md:h-8" />
+        </motion.a>
+      </div>
     </div>
+    
   );
 };
 

@@ -103,8 +103,7 @@ const ConferenciaIA: React.FC = () => {
             </h1>
             
             <p className="text-base md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-10 px-2">
-              Has visto el futuro en la conferencia. Ahora experiméntalo. 
-              Orvex centraliza, automatiza y escala tu operación sin que muevas un dedo.
+              Centralizamos tu operación y la automatizamos al máximo. Usamos la potencia de WhatsApp Flows para crear flujos interactivos y profesionales que escalan tu negocio al maximo.
             </p>
 
             {/* Botón Principal (Hero) */}

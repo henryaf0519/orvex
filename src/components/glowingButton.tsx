@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import SignupFormDemo from "./form/form";
-
+const WHATSAPP_LINK = "https://wa.me/573007907209?text=Hola,%20vengo%20de%20la%20conferencia%20y%20quiero%20ver%20la%20magia%20de%20Orvex.";
 const GlowingButton: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -25,9 +25,11 @@ const GlowingButton: React.FC = () => {
 
   return (
     <>
-      <button
+      <a
         className="mt-10 relative inline-flex items-center justify-center w-64 h-19 rounded-full p-1 group focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-slate-900"
-        onClick={() => setIsModalOpen(true)}
+        href={WHATSAPP_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {/* Background glow element (no change needed here, it adapts) */}
         <div
@@ -74,7 +76,7 @@ const GlowingButton: React.FC = () => {
   >
     Agendar Demo
   </div>
-      </button>
+      </a>
       {isModalOpen && ReactDOM.createPortal(modal, document.body)}
     </>
   );

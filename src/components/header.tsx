@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import SignupFormDemo from "./form/form";
 import {Link } from "react-router-dom";
-const WHATSAPP_LINK = "https://wa.me/573007907209?text=Hola,%20vengo%20de%20la%20conferencia%20y%20quiero%20ver%20la%20magia%20de%20Orvex.";
+const WHATSAPP_LINK = "https://wa.me/573237407414?text=Hola%20estoy%20interesado%20en%20sus%20servicios";
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para el menú móvil

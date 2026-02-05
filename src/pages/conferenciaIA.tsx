@@ -6,7 +6,7 @@ import { FaInstagram, FaWhatsapp } from "react-icons/fa"; // Importamos íconos 
 import { usePageTitle } from "../hooks/usePageTitle";
 
 // Configuración del botón de WhatsApp
-const WHATSAPP_LINK = "https://wa.me/573007907209?text=Hola,%20vengo%20de%20la%20conferencia%20y%20quiero%20ver%20la%20magia%20de%20Orvex.";
+const WHATSAPP_LINK = "https://wa.me/573237407414?text=Hola%20estoy%20interesado%20en%20sus%20servicios";
 const INSTAGRAM_LINK = "https://www.instagram.com/orvex.ia/";
 
 const ConferenciaIA: React.FC = () => {

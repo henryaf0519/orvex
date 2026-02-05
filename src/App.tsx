@@ -3,7 +3,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layout";
 import Home from "./pages/home";
-import AgentesIA from "./pages/agentes-ia";
+//import AgentesIA from "./pages/agentes-ia";
 import FinishPage from "./pages/finish";
 import AgendarDemo from "./pages/agendarDemo";
 import AnalyticsTracker from "./components/AnalyticsTracker";

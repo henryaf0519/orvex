@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import SignupFormDemo from "./form/form";
-const WHATSAPP_LINK = "https://wa.me/573007907209?text=Hola,%20vengo%20de%20la%20conferencia%20y%20quiero%20ver%20la%20magia%20de%20Orvex.";
+const WHATSAPP_LINK = "https://wa.me/573237407414?text=Hola%20estoy%20interesado%20en%20sus%20servicios";
 const GlowingButton: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 

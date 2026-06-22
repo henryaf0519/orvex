@@ -1,61 +1,91 @@
 // src/pages/conferenciaIA.tsx
 import React from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, Zap, Calendar, Users, BarChart, ArrowRight, Play } from "lucide-react";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa"; // Importamos íconos de marca
+import { Monitor, Play, Mail, Share2, Megaphone, Gem, MessageSquare, Camera, Users, Workflow, Zap } from "lucide-react";
+import { FaInstagram } from "react-icons/fa";
 import { usePageTitle } from "../hooks/usePageTitle";
 
-// Configuración del botón de WhatsApp
-const WHATSAPP_LINK = "https://wa.me/573237407414?text=Hola%20estoy%20interesado%20en%20sus%20servicios";
+const CONTACT_LINK = "mailto:contacto@orvex.com";
 const INSTAGRAM_LINK = "https://www.instagram.com/orvex.ia/";
 
 const ConferenciaIA: React.FC = () => {
-  usePageTitle("Orvex | Experiencia IA");
+  usePageTitle("Orvex | Desarrollo Web & Agencia IA");
 
-  const features = [
+  const clients = [
     {
-      title: "Gestión de Leads Simplificada",
-      description: "Olvídate de los Excel. Visualiza cada oportunidad en un table inteligente para filtrar tus leads.",
-      image: "/assets/crm.png",
-      icon: <Users className="text-primaryColor" size={24} />,
-      align: "right"
+      name: "Arriendy",
+      logo: "/assets/arriendy.svg", // Asegúrate de crear esta carpeta y guardar las imágenes
+      url: "https://www.arriendy.com/"
     },
     {
-      title: "Flujos de Conversación Visuales",
-      description: "Diseña la lógica de tu negocio arrastrando y soltando. Tu IA sabrá exactamente qué responder y cuándo vender.",
-      image: "/assets/flow.png",
-      icon: <Zap className="text-primaryColor" size={24} />,
-      align: "left"
+      name: "Root & Cane",
+      logo: "/assets/rootCane.png",
+      url: "https://rootandcane.com/products"
     },
     {
-      title: "Atención Omnicanal Centralizada",
-      description: "WhatsApp, Instagram y Web en una sola pantalla. Tu IA responde al instante, tu equipo supervisa cuando es necesario.",
-      image: "/assets/chat.png",
-      icon: <MessageCircle className="text-primaryColor" size={24} />,
-      align: "right"
+      name: "Development Solutions Foundation",
+      logo: "/assets/dfs.webp",
+      url: "https://corporaciondsf.com/"
     },
     {
-      title: "Agenda Corporativa Inteligente",
-      description: "Sincronización en tiempo real. La IA agenda citas basándose en la disponibilidad real de tu equipo, 24/7.",
-      image: "/assets/calendar.png",
-      icon: <Calendar className="text-primaryColor" size={24} />,
-      align: "left"
+      name: "Afiliamos Seguridad Social ",
+      logo: "/assets/afiliamos.png",
+      url: "https://wa.me/573006604848?text=Hola,%20me%20gustaría%20más%20información."
     },
     {
-      title: "Marketing Automatizado",
-      description: "Envía campañas masivas personalizadas y recurrentes con un solo clic.",
-      image: "/assets/marketing.png",
-      icon: <BarChart className="text-primaryColor" size={24} />,
-      align: "right"
+      name: "Finmark Laboratories",
+      logo: "/assets/finlab.png",
+      url: "https://example.com"
+    },
+    {
+      name: "Naturanja",
+      logo: "/assets/naturanja.png",
+      url: "https://www.instagram.com/naturanja_oficial/?hl=es"
     }
+
   ];
 
+  const services = [
+    {
+      title: "Diseño y Desarrollo Web",
+      description: "Creamos sitios web visualmente atractivos, rápidos y optimizados para convertir visitantes en clientes. Desde landing pages hasta e-commerce, tu página será tu mejor vendedor, disponible 24/7.",
+      icon: <Monitor className="text-white w-6 h-6 md:w-8 md:h-8" />,
+    },
+    {
+      title: "Producción de Contenido Visual",
+      description: "Creamos videos de hasta 60 segundos con Avatares IA hiperrealistas, subtítulos dinámicos, música y edición profesional diseñada para el éxito en redes sociales.",
+      icon: <Camera className="text-white w-6 h-6 md:w-8 md:h-8" />,
+    },
+    {
+      // --- TARJETA ACTUALIZADA PARA INCLUIR LA PLATAFORMA ---
+      title: "Embudos & Automatización WhatsApp",
+      description: "Diseñamos sistemas inteligentes y chatbots avanzados. Captamos leads, nutrimos prospectos y automatizamos tu ciclo de ventas directamente en WhatsApp sin intervención manual.",
+      icon: <MessageSquare className="text-white w-6 h-6 md:w-8 md:h-8" />,
+    },
+    {
+      title: "Gestión de Redes Sociales",
+      description: "Construimos y posicionamos tu marca en Instagram, Facebook, TikTok y más. Desarrollamos contenido estratégico, visualmente impactante y alineado con tus objetivos de crecimiento.",
+      icon: <Share2 className="text-white w-6 h-6 md:w-8 md:h-8" />,
+    },
+    {
+      title: "Branding e Identidad de Marca",
+      description: "Desarrollamos la identidad visual y el tono de comunicación de tu empresa para que destaque en su sector y conecte emocionalmente con tu audiencia en todos los canales.",
+      icon: <Gem className="text-white w-6 h-6 md:w-8 md:h-8" />,
+    }]
+
+  const portfolioVideos = [
+    { id: "qD3Nqh42bZw", title: "Video de Prueba 1" },
+    { id: "qJTf0DvQf9Y", title: "Video de Prueba 2" },
+    { id: "uhEsItcjDGk", title: "Video de Prueba 3" },
+  ];
+
+
+
   return (
-    <div className="bg-black min-h-screen font-sans text-white selection:bg-primaryColor selection:text-white pb-12 md:pb-20 overflow-x-hidden relative">
-      
+    <div className="bg-[#0a0a0a] min-h-screen font-sans text-white selection:bg-primaryColor selection:text-white pb-12 md:pb-20 overflow-x-hidden relative">
+
       {/* --- BOTONES FLOTANTES (Social Media) --- */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4 items-center">
-        {/* Instagram Floating Button */}
         <motion.a
           href={INSTAGRAM_LINK}
           target="_blank"
@@ -64,30 +94,15 @@ const ConferenciaIA: React.FC = () => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.3 }}
           className="bg-gradient-to-tr from-[#f09433] via-[#bc1888] to-[#cc2366] p-3 md:p-4 rounded-full shadow-lg hover:shadow-pink-500/30 text-white flex items-center justify-center transform transition-transform hover:scale-110"
-          title="Síguenos en Instagram"
         >
           <FaInstagram className="w-6 h-6 md:w-8 md:h-8" />
-        </motion.a>
-
-        {/* WhatsApp Floating Button */}
-        <motion.a
-          href={WHATSAPP_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.3 }}
-          className="bg-[#25D366] p-3 md:p-4 rounded-full shadow-lg hover:shadow-green-500/30 text-white flex items-center justify-center transform transition-transform hover:scale-110"
-          title="Chatea con nosotros"
-        >
-          <FaWhatsapp className="w-6 h-6 md:w-8 md:h-8" />
         </motion.a>
       </div>
 
       {/* --- HERO SECTION --- */}
       <section className="relative pt-28 pb-12 md:pt-32 md:pb-10 px-4 md:px-6 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[400px] bg-primaryColor/20 blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
-        
+
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -95,34 +110,156 @@ const ConferenciaIA: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block py-1 px-3 rounded-full bg-gray-900 border border-gray-700 text-xs md:text-sm text-gray-300 mb-4 md:mb-6">
-              Bienvenido a la evolución de tu negocio
+              Agencia de Desarrollo, Marketing & Inteligencia Artificial
             </span>
-            
+
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6 bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent px-2">
-              El Cerebro Digital <br className="hidden md:block" /> de tu Empresa
+              Transformamos tu Visión <br className="hidden md:block" /> en Código y Realidad
             </h1>
-            
+
             <p className="text-base md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-10 px-2">
-              Centralizamos tu operación y la automatizamos al máximo. Usamos la potencia de WhatsApp Flows para crear flujos interactivos y profesionales que escalan tu negocio al maximo.
+              Desde Landing Pages y plataformas E-commerce, hasta nuestra propia plataforma CRM de automatización para WhatsApp.
             </p>
 
-            {/* Botón Principal (Hero) */}
             <motion.a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={CONTACT_LINK}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-3 bg-primaryColor text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-bold shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] transition-all w-full md:w-auto max-w-xs"
+              className="inline-flex items-center justify-center gap-3 bg-primaryColor text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-bold shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] transition-all w-full md:w-auto max-w-xs mx-auto"
             >
-              <MessageCircle size={24} />
-              Probar Demo en WhatsApp
+              <Mail size={24} />
+              Cotizar Proyecto
             </motion.a>
           </motion.div>
         </div>
       </section>
 
-      {/* --- VIDEO DEMO SECTION (NUEVA) --- */}
+      {/* --- CLIENTS CAROUSEL (ACTUALIZADO CON LOGOS Y LINKS) --- */}
+      <section className="py-10 border-y border-gray-800/50 bg-[#111111]/50 backdrop-blur-sm overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 mb-8 text-center">
+          <p className="text-sm md:text-base text-gray-500 font-medium uppercase tracking-wider">
+            Empresas que confían en nosotros
+          </p>
+        </div>
+
+        <div className="relative flex overflow-x-hidden w-full group">
+          {/* Degradados laterales para el efecto de fundido */}
+          <div className="absolute top-0 left-0 w-20 md:w-40 h-full bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-20 md:w-40 h-full bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none"></div>
+
+          <motion.div
+            className="flex whitespace-nowrap items-center gap-16 md:gap-24 px-6 md:px-12"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 30 }} // Ajusta 'duration' para la velocidad
+          >
+            {/* Duplicamos el array para que el scroll sea infinito y continuo */}
+            {[...clients, ...clients].map((client, index) => (
+              <a
+                key={index}
+                href={client.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 opacity-50 hover:opacity-100 hover:scale-105 transition-all duration-300"
+                title={`Visitar página de ${client.name}`}
+              >
+                {/* 
+                */}
+                <img
+                  src={client.logo}
+                  alt={`Logo de ${client.name}`}
+                  className="h-10 md:h-14 w-auto object-contain filter  transition-all duration-300"
+                  onError={(e) => {
+                    // Fallback en caso de que la imagen no cargue: muestra el nombre
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                {/* Texto de respaldo oculto por defecto */}
+                <span className="hidden text-xl md:text-3xl font-bold text-gray-400 hover:text-white">
+                  {client.name}
+                </span>
+              </a>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+      {/* --- SERVICES GRID --- */}
+      <section className="max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-28">
+        <div className="text-center mb-16 md:mb-20">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">Nuestros Servicios</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">Soluciones integrales para escalar tu presencia en el mundo digital.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {services.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-[#141414] border border-[#222222] hover:border-primaryColor/50 rounded-2xl p-8 md:p-10 transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col h-full"
+            >
+              <div className="mb-6 bg-gray-800/50 w-14 h-14 rounded-xl flex items-center justify-center border border-gray-700 group-hover:bg-primaryColor/20 group-hover:border-primaryColor/50 transition-colors">
+                {item.icon}
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">
+                {item.title}
+              </h3>
+              <p className="text-gray-400 leading-relaxed flex-grow text-sm md:text-base">
+                {item.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+       {/* --- VIDEO DEMO SECTION (Avatares IA) --- */}
+      <section className="py-20 px-4 md:px-6 bg-gradient-to-b from-transparent to-[#111] border-b border-gray-900">
+        <div className="max-w-5xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="text-primaryColor font-bold tracking-wider uppercase text-sm mb-2 block">Agencia de Contenido Visual</span>
+            <h3 className="text-2xl md:text-4xl font-bold mb-4 text-white/90 flex items-center justify-center gap-2">
+              <Play className="w-8 h-8 text-primaryColor fill-primaryColor" />
+              Revoluciona tus Redes con IA
+            </h3>
+            <p className="text-gray-400 max-w-xl mx-auto mb-10 text-lg">
+              Creamos videos impactantes de hasta 60 segundos con Avatares IA hiperrealistas, subtítulos dinámicos y musicalización lista para viralizar.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {portfolioVideos.map((video) => (
+                <motion.div
+                  key={video.id}
+                  whileHover={{ y: -10 }}
+                  className="relative rounded-3xl overflow-hidden border border-gray-800 bg-black shadow-2xl group"
+                >
+                  <div className="aspect-[9/16] w-full">
+                    <iframe
+                      className="w-full h-full"
+                      // El parámetro 'mute=1' es lo que permite que 'autoplay=1' funcione
+                      src={`https://www.youtube.com/embed/${video.id}?autoplay=1&mute=1&loop=1&playlist=${video.id}&rel=0&modestbranding=1`}
+                      title={video.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      
+
+      {/* --- NUEVA SECCIÓN: PLATAFORMA CRM WHATSAPP --- */}
       <section className="py-12 px-4 md:px-6">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div
@@ -169,45 +306,8 @@ const ConferenciaIA: React.FC = () => {
         </div>
       </section>
 
-      {/* --- FEATURES SHOWCASE --- */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 space-y-20 md:space-y-32 py-8 md:py-10">
-        {features.map((item, index) => (
-          <motion.div 
-            key={index}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.7 }}
-            className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-20 ${item.align === 'left' ? 'md:flex-row-reverse' : ''}`}
-          >
-            {/* Texto */}
-            <div className="w-full md:w-5/12 space-y-4 md:space-y-6 text-center md:text-left">
-              <div className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-900 border border-gray-800 shadow-lg">
-                {item.icon}
-              </div>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight px-2 md:px-0">
-                {item.title}
-              </h2>
-              <p className="text-base md:text-lg text-gray-400 leading-relaxed px-2 md:px-0">
-                {item.description}
-              </p>
-            </div>
 
-            {/* Imagen */}
-            <div className="w-full md:w-7/12 relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-primaryColor to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                <div className="relative bg-gray-900 ring-1 ring-white/10 rounded-2xl overflow-hidden shadow-2xl">
-                  <img 
-                    src={item.image} 
-                    alt={item.title} 
-                    className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
-                </div>
-            </div>
-          </motion.div>
-        ))}
-      </section>
+     
 
       {/* --- FINAL CTA --- */}
       <section className="py-16 md:py-24 px-4 md:px-6 text-center">
@@ -215,30 +315,25 @@ const ConferenciaIA: React.FC = () => {
           initial={{ scale: 0.9, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto bg-gradient-to-b from-gray-900 to-black border border-gray-800 p-8 md:p-16 rounded-3xl relative overflow-hidden"
+          className="max-w-4xl mx-auto bg-[#111111] border border-[#222222] p-8 md:p-16 rounded-3xl relative overflow-hidden"
         >
-          {/* Fondo decorativo */}
-          <div className="absolute top-0 right-0 w-40 h-40 md:w-64 md:h-64 bg-primaryColor/10 blur-[60px] md:blur-[80px] rounded-full"></div>
-          
+          <div className="absolute top-0 right-0 w-40 h-40 md:w-64 md:h-64 bg-primaryColor/10 blur-[60px] md:blur-[80px] rounded-full pointer-events-none"></div>
+
           <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6 relative z-10">
-            ¿Listo para automatizar lo aburrido?
+            ¿Listo para escalar tu negocio al siguiente nivel?
           </h2>
-          <p className="text-base md:text-xl text-gray-400 mb-8 md:mb-10 relative z-10 px-2">
-            Interactúa con nuestra IA ahora mismo en WhatsApp y mira cómo agenda, vende y responde en segundos.
+          <p className="text-base md:text-xl text-gray-400 mb-8 md:mb-10 relative z-10 px-2 max-w-2xl mx-auto">
+            Cuéntanos tu idea. Diseñamos el software, desarrollamos la web, automatizamos tu WhatsApp o creamos el contenido IA que necesitas para destacar.
           </p>
-          
-          {/* BOTÓN VERDE MODIFICADO */}
+
           <motion.a
-            href={WHATSAPP_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative z-10 inline-flex items-center justify-center gap-2 text-white bg-[#25D366] hover:bg-[#20BD5C] px-6 py-2 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold transition-all shadow-lg hover:shadow-green-500/30 w-full md:w-auto"
+            href={CONTACT_LINK}
+            className="relative z-10 inline-flex items-center justify-center gap-2 text-black bg-white hover:bg-gray-200 px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold transition-all shadow-lg w-full md:w-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <MessageCircle size={24} fill="white" />
-            Hablar con Orvex
-            <ArrowRight size={20} />
+            <Mail size={24} />
+            Contactar al Equipo
           </motion.a>
         </motion.div>
       </section>

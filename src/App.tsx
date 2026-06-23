@@ -8,6 +8,7 @@ import FinishPage from "./pages/finish";
 import AgendarDemo from "./pages/agendarDemo";
 import AnalyticsTracker from "./components/AnalyticsTracker";
 import ConferenciaIA from "./pages/conferenciaIA";
+import Cotizador from "./pages/cotizador";
 
 const App: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const App: React.FC = () => {
           <Route path="finish" element={<FinishPage />} />
           <Route path="schedule" element={<AgendarDemo />} />
           <Route path="conferenciaIA" element={<ConferenciaIA />} />
+          <Route path="cotizador" element={<Cotizador />} />
           
           {/* 404 */}
         </Route>

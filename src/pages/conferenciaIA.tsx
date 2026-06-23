@@ -74,9 +74,9 @@ const ConferenciaIA: React.FC = () => {
     }]
 
   const portfolioVideos = [
-    { id: "qD3Nqh42bZw", title: "Video de Prueba 1" },
-    { id: "qJTf0DvQf9Y", title: "Video de Prueba 2" },
-    { id: "uhEsItcjDGk", title: "Video de Prueba 3" },
+    { id: "6gLeL7EE0S4", title: "Video de Prueba 1" },
+    { id: "ySJbuxo6g6U", title: "Video de Prueba 2" },
+    { id: "OHbAR-BQ0MM", title: "Video de Prueba 3" },
   ];
 
 

@@ -170,6 +170,7 @@ const CotizadorPro: React.FC = () => {
     };
 
 
+    
     const finalize = () => {
         let message = "";
         const serviceType = selection[0]?.flow || (service === 'video' ? 'video' : 'landing');
@@ -182,7 +183,7 @@ const CotizadorPro: React.FC = () => {
             message = formatLandingMessage(selection, total);
         }
 
-        window.open(`https://wa.me/573006604848?text=${encodeURIComponent(message)}`, '_blank');
+        window.open(`https://wa.me/573227596729?text=${encodeURIComponent(message)}`, '_blank');
     };
 
     if (!service) return (

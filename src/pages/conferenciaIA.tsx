@@ -2,13 +2,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Monitor, Play, Mail, Share2, Megaphone, Gem, MessageSquare, Camera, Users, Workflow, Zap } from "lucide-react";
-import { FaInstagram } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { usePageTitle } from "../hooks/usePageTitle";
+import { useNavigate } from 'react-router-dom';
 
-const CONTACT_LINK = "mailto:contacto@orvex.com";
+const WHATSAPP_LINK = "https://wa.me/573237407414?text=Hola%20estoy%20interesado%20en%20sus%20servicios";
 const INSTAGRAM_LINK = "https://www.instagram.com/orvex.ia/";
 
 const ConferenciaIA: React.FC = () => {
+  const navigate = useNavigate();
   usePageTitle("Orvex | Desarrollo Web & Agencia IA");
 
   const clients = [
@@ -87,15 +89,16 @@ const ConferenciaIA: React.FC = () => {
       {/* --- BOTONES FLOTANTES (Social Media) --- */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4 items-center">
         <motion.a
-          href={INSTAGRAM_LINK}
+          href={WHATSAPP_LINK}
           target="_blank"
           rel="noopener noreferrer"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.3 }}
-          className="bg-gradient-to-tr from-[#f09433] via-[#bc1888] to-[#cc2366] p-3 md:p-4 rounded-full shadow-lg hover:shadow-pink-500/30 text-white flex items-center justify-center transform transition-transform hover:scale-110"
+          transition={{ delay: 0.6, duration: 0.3 }}
+          className="bg-[#25D366] p-3 md:p-4 rounded-full shadow-lg hover:shadow-green-500/30 text-white flex items-center justify-center transform transition-transform hover:scale-110"
+          title="Chatea con nosotros"
         >
-          <FaInstagram className="w-6 h-6 md:w-8 md:h-8" />
+          <FaWhatsapp className="w-6 h-6 md:w-8 md:h-8" />
         </motion.a>
       </div>
 
@@ -122,12 +125,11 @@ const ConferenciaIA: React.FC = () => {
             </p>
 
             <motion.a
-              href={CONTACT_LINK}
+              onClick={() => navigate('/cotizador')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center justify-center gap-3 bg-primaryColor text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-bold shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] transition-all w-full md:w-auto max-w-xs mx-auto"
             >
-              <Mail size={24} />
               Cotizar Proyecto
             </motion.a>
           </motion.div>
@@ -190,7 +192,8 @@ const ConferenciaIA: React.FC = () => {
           <p className="text-gray-400 max-w-2xl mx-auto">Soluciones integrales para escalar tu presencia en el mundo digital.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* --- GRID TIPO BENTO BOX --- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 md:gap-8">
           {services.map((item, index) => (
             <motion.div
               key={index}
@@ -198,7 +201,15 @@ const ConferenciaIA: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-[#141414] border border-[#222222] hover:border-primaryColor/50 rounded-2xl p-8 md:p-10 transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col h-full"
+              /* Magia de Grid: 
+                 - lg:col-span-2 para las 3 primeras (ocupan 33% c/u)
+                 - lg:col-span-3 para las 2 últimas (ocupan 50% c/u y se centran en la fila de abajo)
+                 - md:col-span-2 centra la última tarjeta si se ve en Tablet (iPad)
+              */
+              className={`bg-[#141414] border border-[#222222] hover:border-primaryColor/50 rounded-2xl p-8 md:p-10 transition-all duration-300 group hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col h-full
+                    ${index < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}
+                    ${index === 4 ? 'md:col-span-2 lg:col-span-3' : ''}
+                `}
             >
               <div className="mb-6 bg-gray-800/50 w-14 h-14 rounded-xl flex items-center justify-center border border-gray-700 group-hover:bg-primaryColor/20 group-hover:border-primaryColor/50 transition-colors">
                 {item.icon}
@@ -212,9 +223,21 @@ const ConferenciaIA: React.FC = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* --- BOTÓN CENTRADO --- */}
+        <div className="mt-16 md:mt-20 flex justify-center w-full">
+          <motion.button
+            onClick={() => navigate('/cotizador')}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center justify-center gap-3 bg-primaryColor text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-bold shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] transition-all w-full md:w-auto min-w-[280px]"
+          >
+            Cotizar Proyecto
+          </motion.button>
+        </div>
       </section>
 
-       {/* --- VIDEO DEMO SECTION (Avatares IA) --- */}
+      {/* --- VIDEO DEMO SECTION (Avatares IA) --- */}
       <section className="py-20 px-4 md:px-6 bg-gradient-to-b from-transparent to-[#111] border-b border-gray-900">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div
@@ -239,7 +262,7 @@ const ConferenciaIA: React.FC = () => {
                   whileHover={{ y: -10 }}
                   className="relative rounded-3xl overflow-hidden border border-gray-800 bg-black shadow-2xl group"
                 >
-                  <div className="aspect-[9/16] w-full">
+                  <div className="aspect-[9/16] md:aspect-[9/16] w-full max-h-[450px] md:max-h-none mx-auto">
                     <iframe
                       className="w-full h-full"
                       // El parámetro 'mute=1' es lo que permite que 'autoplay=1' funcione
@@ -257,7 +280,7 @@ const ConferenciaIA: React.FC = () => {
         </div>
       </section>
 
-      
+
 
       {/* --- NUEVA SECCIÓN: PLATAFORMA CRM WHATSAPP --- */}
       <section className="py-12 px-4 md:px-6">
@@ -268,36 +291,41 @@ const ConferenciaIA: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="text-2xl md:text-3xl font-bold mb-8 text-white/90 flex items-center justify-center gap-2">
+            <h3 className="text-2xl md:text-3xl font-bold mb-3 text-white/90 flex items-center justify-center gap-2">
               <Play className="w-6 h-6 text-primaryColor fill-primaryColor" />
               Mira la magia en acción
             </h3>
 
+            {/* --- NUEVO SUBTÍTULO --- */}
+            <p className="text-gray-400 max-w-lg mx-auto mb-10 text-sm md:text-base leading-relaxed">
+              Descubre cómo revolucionamos las ventas y automatizamos la atención de tu negocio con el poder de <span className="text-white font-semibold">WhatsApp Flows</span>.
+            </p>
+
             {/* Contenedor estilo "iPhone" para el video */}
             <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[10px] md:border-[14px] rounded-[2.5rem] w-full max-w-[300px] md:max-w-[320px] shadow-2xl shadow-primaryColor/20">
-                {/* Cámara/Notch */}
-                <div className="h-[32px] w-[3px] bg-gray-800 absolute -start-[12px] md:-start-[17px] top-[72px] rounded-s-lg"></div>
-                <div className="h-[46px] w-[3px] bg-gray-800 absolute -start-[12px] md:-start-[17px] top-[124px] rounded-s-lg"></div>
-                <div className="h-[46px] w-[3px] bg-gray-800 absolute -start-[12px] md:-start-[17px] top-[178px] rounded-s-lg"></div>
-                <div className="h-[64px] w-[3px] bg-gray-800 absolute -end-[12px] md:-end-[17px] top-[142px] rounded-e-lg"></div>
-                
-                <div className="rounded-[2rem] overflow-hidden w-full bg-black aspect-[9/19] relative">
-                    {/* Aquí va el video. Asegúrate de tener el archivo en public/assets/demo-whatsapp.mp4 */}
-                    <video 
-                        className="w-full h-full object-cover" 
-                        src="/assets/demo.mp4" 
-                        autoPlay 
-                        loop 
-                        muted 
-                        playsInline
-                        poster="/assets/chat.png" // Imagen de carga mientras carga el video
-                    >
-                        Tu navegador no soporta el elemento de video.
-                    </video>
-                    
-                    {/* Gradiente inferior para que se integre mejor */}
-                    <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
-                </div>
+              {/* Cámara/Notch */}
+              <div className="h-[32px] w-[3px] bg-gray-800 absolute -start-[12px] md:-start-[17px] top-[72px] rounded-s-lg"></div>
+              <div className="h-[46px] w-[3px] bg-gray-800 absolute -start-[12px] md:-start-[17px] top-[124px] rounded-s-lg"></div>
+              <div className="h-[46px] w-[3px] bg-gray-800 absolute -start-[12px] md:-start-[17px] top-[178px] rounded-s-lg"></div>
+              <div className="h-[64px] w-[3px] bg-gray-800 absolute -end-[12px] md:-end-[17px] top-[142px] rounded-e-lg"></div>
+
+              <div className="rounded-[2rem] overflow-hidden w-full bg-black aspect-[9/19] relative">
+                {/* Aquí va el video. Asegúrate de tener el archivo en public/assets/demo-whatsapp.mp4 */}
+                <video
+                  className="w-full h-full object-cover"
+                  src="/assets/demo.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  poster="/assets/chat.png" // Imagen de carga mientras carga el video
+                >
+                  Tu navegador no soporta el elemento de video.
+                </video>
+
+                {/* Gradiente inferior para que se integre mejor */}
+                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
+              </div>
             </div>
             <p className="text-sm text-gray-500 mt-4">
               * Grabación real de nuestro agente Orvex en WhatsApp
@@ -307,7 +335,7 @@ const ConferenciaIA: React.FC = () => {
       </section>
 
 
-     
+
 
       {/* --- FINAL CTA --- */}
       <section className="py-16 md:py-24 px-4 md:px-6 text-center">
@@ -327,13 +355,12 @@ const ConferenciaIA: React.FC = () => {
           </p>
 
           <motion.a
-            href={CONTACT_LINK}
+            onClick={() => navigate('/cotizador')}
             className="relative z-10 inline-flex items-center justify-center gap-2 text-black bg-white hover:bg-gray-200 px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold transition-all shadow-lg w-full md:w-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Mail size={24} />
-            Contactar al Equipo
+            Cotizar Proyecto
           </motion.a>
         </motion.div>
       </section>

@@ -1,13 +1,15 @@
 // src/pages/conferenciaIA.tsx
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Monitor, Play, Mail, Share2, Megaphone, Gem, MessageSquare, Camera, Users, Workflow, Zap } from "lucide-react";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { Monitor, Play, Share2, Gem, MessageSquare, Camera } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { usePageTitle } from "../hooks/usePageTitle";
 import { useNavigate } from 'react-router-dom';
+import MobileTestimonialsCarousel from "../components/mobileTestimonies";
+import VerticalScrollTestimonials from "../components/testimonies";
 
 const WHATSAPP_LINK = "https://wa.me/573237407414?text=Hola%20estoy%20interesado%20en%20sus%20servicios";
-const INSTAGRAM_LINK = "https://www.instagram.com/orvex.ia/";
+
 
 const ConferenciaIA: React.FC = () => {
   const navigate = useNavigate();
@@ -81,6 +83,11 @@ const ConferenciaIA: React.FC = () => {
     { id: "OHbAR-BQ0MM", title: "Video de Prueba 3" },
   ];
 
+  const [isMobile, setIsMobile] = useState(false);
+  const updateDevice = () => {
+    setIsMobile(window.innerWidth <= 768);
+  };
+
 
 
   return (
@@ -128,7 +135,7 @@ const ConferenciaIA: React.FC = () => {
               onClick={() => navigate('/cotizador')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-3 bg-primaryColor text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-bold shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] transition-all w-full md:w-auto max-w-xs mx-auto"
+              className="inline-flex cursor-pointer items-center justify-center gap-3 bg-primaryColor text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-bold shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] transition-all w-full md:w-auto max-w-xs mx-auto"
             >
               Cotizar Proyecto
             </motion.a>
@@ -230,7 +237,7 @@ const ConferenciaIA: React.FC = () => {
             onClick={() => navigate('/cotizador')}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center justify-center gap-3 bg-primaryColor text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-bold shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] transition-all w-full md:w-auto min-w-[280px]"
+            className="cursor-pointer inline-flex items-center justify-center gap-3 bg-primaryColor text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-bold shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] transition-all w-full md:w-auto min-w-[280px]"
           >
             Cotizar Proyecto
           </motion.button>
@@ -274,8 +281,18 @@ const ConferenciaIA: React.FC = () => {
                     ></iframe>
                   </div>
                 </motion.div>
+
+
               ))}
             </div>
+            <motion.a
+              onClick={() => navigate('/cotizador')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="mt-10 cursor-pointer inline-flex items-center justify-center gap-3 bg-primaryColor text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-bold shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] transition-all w-full md:w-auto max-w-xs mx-auto"
+            >
+              Quiero mi Avatar IA
+            </motion.a>
           </motion.div>
         </div>
       </section>
@@ -331,6 +348,27 @@ const ConferenciaIA: React.FC = () => {
               * Grabación real de nuestro agente Orvex en WhatsApp
             </p>
           </motion.div>
+
+          <motion.a
+            href="https://wa.me/573237407414?text=Hola,%20me%20interesa%20automatizar%20mi%20atención"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="m-5 inline-flex items-center justify-center gap-3 bg-primaryColor text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-bold shadow-[0_0_30px_rgba(255,0,0,0.4)] hover:shadow-[0_0_50px_rgba(255,0,0,0.6)] transition-all w-full md:w-auto max-w-xs mx-auto"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Automatizar Whatsapp
+          </motion.a>
+        </div>
+      </section>
+
+      <section className="px-6 bg-black">
+        <div className="max-w-7xl mx-auto">
+          {isMobile ? (
+            <MobileTestimonialsCarousel />
+          ) : (
+            <VerticalScrollTestimonials />
+          )}
         </div>
       </section>
 
@@ -356,7 +394,7 @@ const ConferenciaIA: React.FC = () => {
 
           <motion.a
             onClick={() => navigate('/cotizador')}
-            className="relative z-10 inline-flex items-center justify-center gap-2 text-black bg-white hover:bg-gray-200 px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold transition-all shadow-lg w-full md:w-auto"
+            className="relative  cursor-pointer z-10 inline-flex items-center justify-center gap-2 text-black bg-white hover:bg-gray-200 px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold transition-all shadow-lg w-full md:w-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ChevronRight, ChevronLeft, Send, Sparkles, Monitor, Video } from 'lucide-react';
+import { Check, ChevronRight, ChevronLeft, Monitor, Video } from 'lucide-react';
 interface Option {
     label: string;
     price: number;
@@ -170,7 +170,7 @@ const CotizadorPro: React.FC = () => {
     };
 
 
-    
+
     const finalize = () => {
         let message = "";
         const serviceType = selection[0]?.flow || (service === 'video' ? 'video' : 'landing');

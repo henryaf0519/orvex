@@ -15,9 +15,10 @@ interface CardProps {
     description: string;
     children?: React.ReactNode;
     img: string;
+    author:string;
 }
 
-const Card: React.FC<CardProps> = ({ className, title, description, children, img }) => (
+const Card: React.FC<CardProps> = ({ className, title, description, children, img, author }) => (
   <div
     className={`w-full bg-white rounded-2xl shadow-xl hover:shadow-2xl p-4 sm:p-6 md:p-8 
                 flex flex-col justify-between 
@@ -37,9 +38,8 @@ const Card: React.FC<CardProps> = ({ className, title, description, children, im
 
     {/* Imagen + children */}
     <div className="flex items-center gap-4 mt-6 flex-wrap">
-      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-4 border-gray-200 shrink-0">
-        <img src={img} alt="Avatar" className="w-full h-full object-cover" />
-      </div>
+       <h1 className='text-gray-600'>{author}.</h1>
+      
       <div className="flex-grow break-words text-sm sm:text-base">
         {children}
       </div>
@@ -141,8 +141,9 @@ export const VerticalScrollTestimonials: React.FC = () => {
             title={card.title}
             description={card.description}
             img={card.img}
+            author= {card.author}
           >
-            <div className="text-sm opacity-60">{card.testimonialAuthor}</div>
+            <div className="text-sm opacity-60">{card.author}</div>
           </Card>
         </div>
       ))}
